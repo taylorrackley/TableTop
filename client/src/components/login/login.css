@@ -1,0 +1,57 @@
+#loginView {
+    width: 100vw;
+    height: 100vh;
+    background: rgb(178,4,4);
+    background: linear-gradient(0deg, rgba(178,4,4,1) 0%, rgba(216,3,3,1) 85%);
+    text-align: center;
+}
+
+#loginLogo {
+    height: 30vh;
+    display: block;
+    margin: 0 auto;
+    padding-top: 20vh;
+}
+
+#loginInputContainer {
+    display: inline-block;
+}
+
+.inputField {
+    width: 60vw;
+    height: 25px;
+    margin: 7px;
+    background-color: #FFF;
+    border: 1px solid #FFF;
+    border-radius: 20px;
+    padding: 5px;
+    padding-left: 25px;
+    text-align: left;
+    font-size: 16px;
+}
+
+#loginBtnBox {
+    text-align: center;
+    display: block;
+    line-height: 25px; /* must match div height */
+    margin: 0 auto;
+    margin-top: 7px;
+}
+
+#loginBtn {
+    color: #B20404;
+    font-weight: 900;
+    font-size: 16px;
+    vertical-align: middle;
+    margin: 0px;
+    padding: 0px;
+}
+
+#createAccount {
+    display: block;
+    color: #FFF;
+    text-transform: uppercase;
+    font-size: 14px;
+    margin-top: 17px;
+    font-weight: 600;
+}
