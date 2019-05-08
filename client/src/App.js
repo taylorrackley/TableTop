@@ -1,5 +1,6 @@
 import React from 'react';
-import Login from './components/login/login'
+import Login from './components/login/login';
+import HomePage from './components/homePage/homePage';
 
 class App extends React.Component {
     constructor(props) {
@@ -10,10 +11,10 @@ class App extends React.Component {
     }
 
     render() {
-        var login = this.state.login ? '' : <Login />;
+        var userLogin = this.state.login ? <HomePage /> : <Login />;
         return (
             <div className="App">
-                {login}
+                {userLogin}
             </div>
         );
     }
