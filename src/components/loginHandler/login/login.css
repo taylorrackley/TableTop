@@ -55,7 +55,12 @@
     display: block;
     color: #FFF;
     text-transform: uppercase;
+    text-decoration: underline;
     font-size: 14px;
     margin-top: 17px;
     font-weight: 600;
+}
+
+#createAccount:hover {
+    cursor: pointer;
 }

@@ -25,10 +25,6 @@ class App extends React.Component {
       this.setState({isAuthenticated: true});
     }
 
-    createAccount = () => {
-        //
-      this.setState({createAccount: true});
-    }
 }
 
 export default App;

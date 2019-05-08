@@ -23,6 +23,10 @@ class Login extends Component {
         this.props.userLogin(this.state.username, this.state.password);
     }
 
+    userCreateAccount = () => {
+        this.props.userCreateAccount(true);
+    }
+
     render() {
         return (
             <div id="loginView">
@@ -30,11 +34,11 @@ class Login extends Component {
                 <div id="loginInputField">
                     <input id="username" name="username" className="inputField" type="text" onChange={this.handleChange} placeholder="Username" />
                     <input id="password" name="password" className="inputField" type="password" placeholder="Password" />
-                    <div id="loginBtnBox" onClick={() => { this.submitLogin() }} className="inputField">
+                    <div id="loginBtnBox" onClick={this.submitLogin} className="inputField">
                         <p id="loginBtn">Login</p>
                     </div>
                 </div>
-                <a href="" id="createAccount">Create Account</a>
+                <a id="createAccount" onClick={this.userCreateAccount}>Create Account</a>
             </div>
         );
     }

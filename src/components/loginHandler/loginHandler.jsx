@@ -11,14 +11,23 @@ class LoginHandler extends Component {
         };
     }
 
+    userCreateAccount = (value) => {
+        //
+        this.setState({createAccount: value});
+    }
+
+    userLogin = () => {
+
+    }
+
     render() {
-        var createAccount = this.state.createAccount ? <CreateAccount /> : <Login userLogin={this.props.userLogin} />;
+        var loginView = this.state.createAccount ? <CreateAccount /> : <Login userLogin={this.userLogin} userCreateAccount={this.userCreateAccount} />;
         return (
             <div className="App">
-                {createAccount}
+                {loginView}
             </div>
         );
     }
 }
 
-export default CreateAccount;
+export default LoginHandler;
