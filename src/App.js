@@ -7,12 +7,12 @@ class App extends React.Component {
         super(props);
         this.state = {
             isAuthenticated: false,
-            createAccount: false;
+            createAccount: false
         };
     }
 
     render() {
-        var userLogin = this.state.login ? <HomePage /> : <Login />;
+        var userLogin = this.state.login ? <HomePage /> : <Login userLogin={this.props.userLogin} />;
         return (
             <div className="App">
                 {userLogin}
@@ -20,7 +20,7 @@ class App extends React.Component {
         );
     }
 
-    userLogin = () => {
+    userLogin = (username, password) => {
       // Do login stuff bla bla bla
       // User is authenticated
       this.setState({isAuthenticated: true});
