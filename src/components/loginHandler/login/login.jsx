@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './login.css';
-import logo from '../../img/logo.png';
+import logo from '../../../img/logo.png';
 
 class Login extends Component {
 
@@ -8,7 +8,8 @@ class Login extends Component {
         super(props);
         this.state = {
             username: '',
-            password: ''
+            password: '',
+            createAccount: false
         };
     }
 

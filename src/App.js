@@ -1,21 +1,20 @@
 import React from 'react';
-import Login from './components/login/login';
+import LoginHandler from './components/loginHandler/loginHandler';
 import HomePage from './components/homePage/homePage';
 
 class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isAuthenticated: false,
-            createAccount: false
+            isAuthenticated: false
         };
     }
 
     render() {
-        var userLogin = this.state.login ? <HomePage /> : <Login userLogin={this.props.userLogin} />;
+        var userView = this.state.isAuthenticated ? <HomePage /> : <LoginHandler userLogin={this.props.userLogin} />;
         return (
             <div className="App">
-                {userLogin}
+                {userView}
             </div>
         );
     }
@@ -27,6 +26,7 @@ class App extends React.Component {
     }
 
     createAccount = () => {
+        //
       this.setState({createAccount: true});
     }
 }
