@@ -38,6 +38,10 @@
     margin-top: 7px;
 }
 
+#loginBtnBox:hover {
+    cursor:pointer;
+}
+
 #loginBtn {
     color: #B20404;
     font-weight: 900;

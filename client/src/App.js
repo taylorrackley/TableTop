@@ -5,12 +5,13 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            login: false
+            isAuthenticated: false,
+            createAccount: false;
         };
     }
 
     render() {
-        var login = this.state.login ? '' : <Login />;
+        var login = this.state.isAuthenticated ? '' : <Login userLogin = {this.userLogin} />;
         return (
             <div className="App">
                 {login}
@@ -18,8 +19,14 @@ class App extends React.Component {
         );
     }
 
-    userLogin() {
-        this.setState({login: true});
+    userLogin = () => {
+      // Do login stuff bla bla bla
+      // User is authenticated
+      this.setState({isAuthenticated: true});
+    }
+
+    createAccount = () => {
+      this.setState({createAccount: true});
     }
 }
 
