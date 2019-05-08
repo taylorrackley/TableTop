@@ -10,7 +10,7 @@ class Login extends Component {
                 <div id="loginInputField">
                     <input id="username" className="inputField" type="text" placeholder="Username" />
                     <input id="password" className="inputField" type="password" placeholder="Password" />
-                    <div id="loginBtnBox" className="inputField">
+                    <div id="loginBtnBox" onClick={() => { this.props.userLogin() }} className="inputField">
                         <p id="loginBtn">Login</p>
                     </div>
                 </div>
@@ -18,6 +18,7 @@ class Login extends Component {
             </div>
         );
     }
+
 }
 
 export default Login;
