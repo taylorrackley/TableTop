@@ -11,15 +11,16 @@ class Login extends Component {
             password: '',
             createAccount: false
         };
+
     }
 
-    handleChange(e) {
+    handleChange = (e) => {
         this.setState({
             [e.target.name]: e.target.value
         });
     }
 
-    submitLogin() {
+    submitLogin = () => {
         this.props.userLogin(this.state.username, this.state.password);
     }
 
@@ -38,7 +39,7 @@ class Login extends Component {
                         <p id="loginBtn">Login</p>
                     </div>
                 </div>
-                <a id="createAccount" onClick={this.userCreateAccount}>Create Account</a>
+                <p id="createAccount" onClick={this.userCreateAccount}>Create Account</p>
             </div>
         );
     }

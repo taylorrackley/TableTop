@@ -12,12 +12,13 @@ class LoginHandler extends Component {
     }
 
     userCreateAccount = (value) => {
-        //
+        // show user create account page
         this.setState({createAccount: value});
     }
 
-    userLogin = () => {
-
+    userLogin = (username, password) => {
+        // Handle login bla bla
+        this.props.userLogin(true);
     }
 
     render() {

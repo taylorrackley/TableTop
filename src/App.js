@@ -10,19 +10,19 @@ class App extends React.Component {
         };
     }
 
+    userLogin = (value) => {
+      // Do login stuff bla bla bla
+      // User is authenticated
+      this.setState({isAuthenticated: value});
+    }
+
     render() {
-        var userView = this.state.isAuthenticated ? <HomePage /> : <LoginHandler userLogin={this.props.userLogin} />;
+        var userView = this.state.isAuthenticated ? <HomePage /> : <LoginHandler userLogin={this.userLogin} />;
         return (
             <div className="App">
                 {userView}
             </div>
         );
-    }
-
-    userLogin = (username, password) => {
-      // Do login stuff bla bla bla
-      // User is authenticated
-      this.setState({isAuthenticated: true});
     }
 
 }
