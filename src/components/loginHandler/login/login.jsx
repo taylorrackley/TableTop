@@ -11,7 +11,6 @@ class Login extends Component {
             password: '',
             createAccount: false
         };
-
     }
 
     handleChange = (e) => {

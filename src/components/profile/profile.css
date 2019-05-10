@@ -1,6 +1,7 @@
 #profile-container {
     position: absolute;
-    background-color: #D20404;
+    background-color: #D80303;
+    top: 0;
     height: 100vh;
     width: 75vw;
 }
@@ -10,12 +11,12 @@
 }
 
 .animate-slide-from-right {
-    transition: 1.5s;
+    transition: 0.3s;
     right: 0;
 }
 
 .animate-slide-to-right {
-    transition: 1.5s;
+    transition: 0.3s;
     right: -100vw;
 }
 

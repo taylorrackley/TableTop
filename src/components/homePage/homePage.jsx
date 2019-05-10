@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import './homePage.css';
-import Profile from '../profile/profile';
+import Navbar from '../navbar/navbar';
 
 class HomePage extends Component {
     render() {
         return (
             // Pass username
-            <Profile username={'Emma Grebe'}/>
+            <div>
+                <Navbar />
+            </div>
         );
     }
 }
