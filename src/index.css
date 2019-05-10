@@ -29,3 +29,11 @@ a {
     font-weight: 500;
     font-size: 18px;
 }
+/* Animate transitions */
+.fade-in {
+    opacity: 0;
+}
+.fade-in.visible {
+    transition: opacity 1s ease-in;
+    opacity: 1;
+}

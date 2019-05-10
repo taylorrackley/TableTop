@@ -24,9 +24,7 @@ class LoginHandler extends Component {
     render() {
         var loginView = this.state.createAccount ? <CreateAccount /> : <Login userLogin={this.userLogin} userCreateAccount={this.userCreateAccount} />;
         return (
-            <div className="App">
-                {loginView}
-            </div>
+            loginView
         );
     }
 }

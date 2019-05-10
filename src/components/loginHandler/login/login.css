@@ -10,14 +10,14 @@
     height: 30vh;
     display: block;
     margin: 0 auto;
-    padding-top: 10vh;
+    padding-top: 15vh;
 }
 
 #loginInputContainer {
     display: inline-block;
 }
 
-.inputField {
+.input-field {
     width: 60vw;
     height: 25px;
     margin: 7px;
@@ -28,9 +28,10 @@
     padding-left: 25px;
     text-align: left;
     font-size: 16px;
+    font-weight: 100;
 }
 
-#loginBtnBox {
+#login-btn-box {
     text-align: center;
     display: block;
     line-height: 25px; /* must match div height */

@@ -33,9 +33,9 @@ class Login extends Component {
             <div id="loginView">
                 <img id="loginLogo" src={logo} alt="Logo" />
                 <div id="loginInputField">
-                    <input id="username" name="username" className="inputField" type="text" onChange={this.handleChange} placeholder="Username" />
-                    <input id="password" name="password" className="inputField" type="password" placeholder="Password" />
-                    <div id="loginBtnBox" onClick={this.submitLogin} className="inputField">
+                    <input id="username" name="username" className="input-field" type="text" onChange={this.handleChange} placeholder="Username" />
+                    <input id="password" name="password" className="input-field" type="password" placeholder="Password" />
+                    <div id="login-btn-box" onClick={this.submitLogin} className="input-field">
                         <p id="loginBtn">Login</p>
                     </div>
                 </div>
