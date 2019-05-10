@@ -11,7 +11,6 @@ class Navbar extends Component {
             paytab: false,
             userProfile: false
         };
-
     }
 
     paytab = () => {
@@ -22,9 +21,13 @@ class Navbar extends Component {
         this.setState({userProfile: true});
     }
 
+    hideUserProfile = () => {
+        this.setState({userProfile: false});
+    }
+
     render() {
         var showPaytabModule = this.state.paytab ? 'paytab module' : '';
-        var showUserProfileModule = this.state.userProfile ? <Profile username={'Emma Grebe'}/> : '';
+        var showUserProfileModule = this.state.userProfile ? <Profile username={'Emma Grebe'} closeProfileView={this.hideUserProfile}/> : '';
         return (
             <div id="navbar-container">
                 <div id="pay-tab-btn" onClick={this.paytab}>Pay a Tab</div>

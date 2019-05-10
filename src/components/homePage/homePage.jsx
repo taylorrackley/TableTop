@@ -6,7 +6,7 @@ class HomePage extends Component {
     render() {
         return (
             // Pass username
-            <div>
+            <div id="homepage-container">
                 <Navbar />
             </div>
         );

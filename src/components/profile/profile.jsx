@@ -17,14 +17,17 @@ class Profile extends Component {
         }, 0)
     }
 
-    componentWillUnmount() {
-        this.setState({animateProfileView: 'animate-slide-to-right'})
+    closeProfileView = () => {
+        this.setState({animateProfileView: 'animate-slide-to-right'});
+        setTimeout(() => {
+            this.props.closeProfileView();
+        }, 300);
     }
 
     render() {
         return (
             <div id="profile-container" className={this.state.animateProfileView}>
-                <img id="close-profile-view" src={closeIcon} alt="Close Profile View" />
+                <img id="close-profile-view" src={closeIcon} onClick={this.closeProfileView} alt="Close Profile View" />
                 <img id="profile-image" src={profileImage} alt="Profile" />
                 <p id="profile-view-username" className="profile-top-text" >{this.props.username}</p>
                 <p id="profile-view-edit-user-btn" className="profile-top-text">Edit Profile</p>
