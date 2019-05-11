@@ -33,7 +33,12 @@ a {
 .fade-in {
     opacity: 0;
 }
+
 .fade-in.visible {
-    transition: opacity 1s ease-in;
+    transition: opacity 2s ease-in;
     opacity: 1;
+}
+
+.bold {
+    font-weight: 600;
 }

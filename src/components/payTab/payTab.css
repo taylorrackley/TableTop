@@ -1,0 +1,99 @@
+.view-invisable {
+    opacity: 0;
+}
+
+.view-visible-blurry {
+    opacity: 0.9;
+}
+
+.pin-swipe-down {
+    max-height: 0;
+}
+
+.pin-swipe-up {
+    overflow-y: hidden;
+	max-height: 70vh; /* approximate max height */
+	transition-property: all;
+	transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+}
+
+#paytab-container {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    background-color: white;
+    transition: opacity 0.3s;
+}
+
+#pin-container {
+    position: absolute;
+    top: 17vh;
+    left: 0;
+    right: 0;
+    width: 70vw;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: #D20404;
+    border: 1px solid #D20404;
+    border-radius: 10px;
+    transition: 0.7s;
+}
+
+#pin-container p {
+    text-align: center;
+    color: white;
+}
+
+#close-pin-view {
+    height: 20px;
+    width: 20px;
+    margin: 10px;
+    float: right;
+}
+
+#thanks-for-using-tabletop {
+    margin-top: 60px;
+    font-size: 22px;
+}
+
+#enter-pin-txt {
+    margin-top: 40px;
+    font-size: 14px;
+}
+
+#pin-input {
+    display: block;
+    margin: 0 auto;
+    margin-top: 30px;
+    width: 3.1em;
+    outline: 0;
+    border: 0;
+    background-color: inherit;
+    color: white;
+    text-align: center;
+    font-size: 4.1em;
+    letter-spacing: 10px;
+    border-bottom: 4px solid #FFF;
+}
+
+#pin-input::placeholder {
+    color: #FFF;
+}
+
+#pay-now-btn {
+    height: 25px;
+    width: 40%;
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    background-color: #FFF;
+    border: 1px solid #FFF;
+    border-radius: 20px;
+    padding: 5px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 900;
+    line-height: 25px; /* must match div height */
+    color: #D20404;
+}
