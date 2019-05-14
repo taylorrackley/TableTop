@@ -1,0 +1,33 @@
+#pin-container {
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#thanks-for-using-tabletop {
+    font-size: 22px;
+}
+
+#enter-pin-txt {
+    margin-top: 35px;
+    font-size: 14px;
+}
+
+#pin-input {
+    display: block;
+    margin: 0 auto;
+    margin-top: 25px;
+    width: 3.1em;
+    outline: 0;
+    border: 0;
+    background-color: inherit;
+    color: white;
+    text-align: center;
+    font-size: 4.1em;
+    letter-spacing: 10px;
+    border-bottom: 4px solid #FFF;
+}
+
+#pin-input::placeholder {
+    color: #FFF;
+}

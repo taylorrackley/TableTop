@@ -18,7 +18,7 @@ class Navbar extends Component {
         this.setState({pinView: true});
     }
 
-    hidePinView = () => {
+    hidePayTabView = () => {
         this.setState({pinView: false});
     }
 
@@ -31,7 +31,7 @@ class Navbar extends Component {
     }
 
     render() {
-        var showPaytabModule = this.state.pinView ? <PayTab hidePinView={this.hidePinView} /> : '';
+        var showPaytabModule = this.state.pinView ? <PayTab hidePayTabView={this.hidePayTabView} /> : '';
         var showUserProfileModule = this.state.userProfile ? <Profile username={'Emma Grebe'} closeProfileView={this.hideUserProfile}/> : '';
         return (
             <div id="navbar-container">
