@@ -1,0 +1,21 @@
+#nfcReaderContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#viewTab {
+    text-align: center;
+}
+
+#viewTab button {
+    border-radius: 20px;
+    background-color: #FFF;
+    border: 1px solid #FFF;
+    padding: 20px;
+}

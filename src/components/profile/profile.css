@@ -1,23 +1,40 @@
+@keyframes grow-left {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes shrink-right {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
+  }
+}
+
 #profile-container {
     position: absolute;
     background-color: #D80303;
     top: 0;
+    right: 0;
     height: 100vh;
     width: 75vw;
+    z-index: 50;
+
+    transform: scaleX(0);
+    transform-origin: right;
 }
 
-.start-offscreen-right {
-    right: -100vw; /* Start transition from off screen */
+.growProfileLeft {
+    animation: grow-left cubic-bezier(0.50, 0.50, 0.50, 0.50) 0.2s forwards;
 }
 
-.animate-slide-from-right {
-    transition: 0.3s;
-    right: 0;
-}
-
-.animate-slide-to-right {
-    transition: 0.3s;
-    right: -100vw;
+.shrinkProfileRight {
+    animation: shrink-right cubic-bezier(0.50, 0.50, 0.50, 0.50) 0.2s forwards;
 }
 
 #close-profile-view {

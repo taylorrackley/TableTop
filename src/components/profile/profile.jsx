@@ -7,18 +7,12 @@ class Profile extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            animateProfileView: 'start-offscreen-right'
+            animateProfileView: 'growProfileLeft'
         }
     }
 
-    componentDidMount(){
-       setTimeout(() => {
-            this.setState({animateProfileView: 'animate-slide-from-right'})
-        }, 0)
-    }
-
     closeProfileView = () => {
-        this.setState({animateProfileView: 'animate-slide-to-right'});
+        this.setState({animateProfileView: 'shrinkProfileRight'});
         setTimeout(() => {
             this.props.closeProfileView();
         }, 300);
@@ -31,8 +25,6 @@ class Profile extends Component {
                 <img id="profile-image" src={profileImage} alt="Profile" />
                 <p id="profile-view-username" className="profile-top-text" >{this.props.username}</p>
                 <p id="profile-view-edit-user-btn" className="profile-top-text">Edit Profile</p>
-                <div>
-                </div>
             </div>
         );
     }

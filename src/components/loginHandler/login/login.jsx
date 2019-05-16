@@ -29,7 +29,7 @@ class Login extends Component {
 
     render() {
         return (
-            <div id="loginView">
+            <div id="loginView" className="gradient">
                 <img id="loginLogo" src={logo} alt="Logo" />
                 <div id="loginInputField">
                     <input id="username" name="username" className="input-field" type="text" onChange={this.handleChange} placeholder="Username" />

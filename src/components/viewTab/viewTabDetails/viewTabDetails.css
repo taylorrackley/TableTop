@@ -1,0 +1,39 @@
+#tabDetailsContainer {
+    border-radius: 55px 55px 0px 0px;
+    width: 100%;
+    height: 100vh;
+    background-color: #FFF;
+    margin-top: 50px;
+    overflow: hidden;
+}
+
+#tabDetailsWrapper {
+    width: 80%;
+    height: 100%;
+    margin: 0 auto;
+    margin-top: 10px;
+    padding-bottom: 150px;
+}
+
+#tabDetailsWrapper hr {
+    border-top: 1px solid #D80303;
+    margin-bottom: 0px;
+}
+
+#tabDetailsRestaurantName {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+#stickToTop {
+    z-index: 15;
+    background-color: #FFF;
+    width: 100%;
+}
+
+#tabDetailsScroll {
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    overflow-y: scroll;
+}

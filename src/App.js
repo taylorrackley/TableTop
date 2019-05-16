@@ -1,13 +1,15 @@
 import React from 'react';
 import LoginHandler from './components/loginHandler/loginHandler';
-import HomePage from './components/homePage/homePage';
+import ViewTab from './components/viewTab/viewTab';
 import NFCReader from './components/nfcReader/nfcReader';
 
 class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isAuthenticated: false
+            isAuthenticated: false,
+            nfcCodeSubmitted: false,
+            nfcTabCode: null
         };
     }
 
@@ -16,11 +18,19 @@ class App extends React.Component {
       this.setState({isAuthenticated: value});
     }
 
+    viewCurrentTab = (code) => {
+        console.log("Switch view to current tab");
+        this.setState({nfcTabCode: code});
+        this.setState({nfcCodeSubmitted: true});
+    }
+
     render() {
-        var userView = this.state.isAuthenticated ? <HomePage /> : <LoginHandler userLogin={this.userLogin} />;
+        //var userView = this.state.isAuthenticated ? <HomePage /> : <LoginHandler userLogin={this.userLogin} />;
+        var getNFC = this.state.nfcCodeSubmitted ? <ViewTab isAuthenticated={this.state.isAuthenticated} /> : <NFCReader viewTab={this.viewCurrentTab}/>;
         return (
-            // userView
-            <NFCReader />
+            <div id="appContainer">
+                {getNFC}
+            </div>
         );
     }
 

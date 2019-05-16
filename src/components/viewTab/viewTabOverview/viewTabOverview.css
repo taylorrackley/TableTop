@@ -1,0 +1,52 @@
+#payTabOverviewContainer {
+    margin-top: 100px;
+    width: 100%;
+}
+
+#payTabOverviewGroup {
+    color: #FFF;
+    font-size: 18px;
+    width: 70%;
+    margin: 0 auto;
+}
+
+#payTabOverviewGroup div {
+    margin-bottom: 5px;
+}
+
+#selectedTipPercentage {
+    margin-left: 10px;
+    padding-right: 5px;
+    padding-left: 5px;
+    background-color: inherit;
+    color: #FFF;
+    border: 0;
+    border-right: 1px solid #FFF;
+    border-left: 1px solid #FFF;
+}
+
+#selectedTipPercentage option {
+    background-color: #D80303;
+    border: 0;
+}
+
+.payTabOverviewLeft {
+    float: left;
+    white-space: nowrap;
+}
+
+.payTabOverviewLeft * {
+    display: inline;
+}
+
+.payTabOverviewRight {
+    float: right;
+}
+
+#totalHeader {
+    margin-top: 10px;
+    font-size: 300%;
+    font-weight: 700;
+    color: #FFF;
+    text-align: center;
+}

@@ -1,9 +1,11 @@
 .view-invisable {
     opacity: 0;
+    transition: opacity 1s ease-out;
 }
 
-.view-visible-blurry {
-    opacity: 0.9;
+.view-visible {
+    opacity: 1;
+    transition: opacity 1s ease-out;
 }
 
 .view-swipe-down {
@@ -32,28 +34,5 @@
     width: 100vw;
     height: 100vh;
     top: 0;
-    background-color: white;
-    transition: opacity 0.3s;
-}
-
-#paytab-view {
-    position: absolute;
-    top: 18vh;
     left: 0;
-    right: 0;
-    width: 70vw;
-    margin: 0 auto;
-    background-color: #D20404;
-    border-radius: 10px;
-}
-
-#paytab-view p {
-    text-align: center;
-    color: white;
-    padding: 0;
-}
-
-#padding-for-close-view {
-    width: 100%;
-    height: 35px;
 }

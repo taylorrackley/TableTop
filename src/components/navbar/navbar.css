@@ -3,32 +3,27 @@
     top: 0;
     left: 0;
     width: 100vw;
-    background-color: #FFF;
+    box-sizing: border-box;
+    padding: 25px;
+    padding-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-#pay-tab-btn {
-    height: 25px;
-    background-color: #D20404;
-    border: 1px solid #D20404;
-    border-radius: 20px;
-    padding: 5px;
-    padding-left: 30px;
-    padding-right: 30px;
-    margin-top: 15px;
-    margin-left: 25px;
-    margin-bottom: 15px;
-    text-align: center;
-    font-size: 18px;
+#navbar-container * {
+    width: 100%;
+}
+
+#insertedText {
+    text-align: left;
+    font-size: 140%;
     font-weight: 600;
-    display: inline-block;
-    line-height: 25px; /* must match div height */
     color: white;
 }
 
 #show-profile-icon {
-    width: 50px;
-    height: 50px;
-    margin-top: 7px;
-    margin-right: 20px;
+    width: 30px;
+    height: 25px;
     float: right;
 }

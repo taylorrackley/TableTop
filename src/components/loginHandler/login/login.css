@@ -1,8 +1,6 @@
 #loginView {
     width: 100vw;
     height: 100vh;
-    background: rgb(178,4,4);
-    background: linear-gradient(0deg, rgba(178,4,4,1) 0%, rgba(216,3,3,1) 65%);
     text-align: center;
 }
 
