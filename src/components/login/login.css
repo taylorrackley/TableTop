@@ -11,14 +11,21 @@
     padding-top: 15vh;
 }
 
-#loginInputContainer {
+#loginForm {
     display: inline-block;
+    width: 100%;
+}
+
+#loginFormWrapper {
+    width: 65%;
+    margin: 0 auto;
 }
 
 .input-field {
-    width: 60vw;
-    height: 25px;
-    margin: 7px;
+    width: 100%;
+    height: 40px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
     background-color: #FFF;
     border: 1px solid #FFF;
     border-radius: 20px;
@@ -29,25 +36,25 @@
     font-weight: 100;
 }
 
-#login-btn-box {
-    text-align: center;
-    display: block;
-    line-height: 25px; /* must match div height */
-    margin: 0 auto;
-    margin-top: 7px;
-}
-
-#loginBtnBox:hover {
-    cursor:pointer;
-}
-
 #loginBtn {
+    width: 100%;
+    height: 40px;
+    background-color: #FFF;
+    border: 1px solid #FFF;
+    border-radius: 20px;
+    margin: 0px;
+    padding: 0px;
+    background-color: #FFF;
+    line-height: 40px; /* must match inputfield height height */
     color: #B20404;
+    text-align: center;
     font-weight: 900;
     font-size: 16px;
     vertical-align: middle;
-    margin: 0px;
-    padding: 0px;
+}
+
+#loginBtn:hover {
+    cursor:pointer;
 }
 
 #createAccount {
@@ -56,7 +63,7 @@
     text-transform: uppercase;
     text-decoration: underline;
     font-size: 14px;
-    margin-top: 17px;
+    margin-top: 20px;
     font-weight: 600;
 }
 

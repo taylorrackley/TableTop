@@ -25,7 +25,7 @@ class ViewTabNextViewBtn extends Component {
     render() {
         return (
             <div id="payTabNextViewContainer" className="gradientDark">
-                <div id="payTabNextViewBtn" onClick={this.goToNextViewCallback()}>{this.props.payTabNextViewTxt}</div>
+                <div id="payTabNextViewBtn" onClick={this.goToPayNow}>Pay Now</div>
             </div>
         );
     }

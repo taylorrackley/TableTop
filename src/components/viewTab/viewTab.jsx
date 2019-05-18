@@ -10,7 +10,6 @@ class ViewTab extends Component {
         super(props);
         this.state = {
             animatePayTabContainer: 'view-invisable',
-            currentView: null,
             tabDetails: {
                 restaurant: 'McDick',
                 subtotal: 18.56,
@@ -44,26 +43,14 @@ class ViewTab extends Component {
     //         this.props.hidePayTabView();
     //     }, 300);
     // }
-
-    goToPayTab = () => {
-
-    }
-
-    goToLogin = () => {
-
-    }
-
+    
     render() {
-        var payTabNextViewBtn = this.props.isAuthenticated ?
-        <ViewTabNextViewBtn payTabNextViewTxt="Pay Now" payTabNextViewCallback={this.goToPayTab} /> :
-        <ViewTabNextViewBtn payTabNextViewTxt="Log In" payTabNextViewCallback={this.goToLogin} />;
-
         return (
             <div id="paytab-container" className={'gradient '+this.state.animatePayTabContainer}>
                 <Navbar insertedText="Your Tab:" />
                 <ViewTabOverview tabDetails={this.state.tabDetails} />
                 <ViewTabDetails tabDetails={this.state.tabDetails} />
-                {payTabNextViewBtn}
+                <ViewTabNextViewBtn />
             </div>
         );
     }

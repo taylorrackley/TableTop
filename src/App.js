@@ -1,6 +1,8 @@
 import React from 'react';
-import LoginHandler from './components/loginHandler/loginHandler';
+import './App.css';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import ViewTab from './components/viewTab/viewTab';
+import Login from './components/login/login';
 import NFCReader from './components/nfcReader/nfcReader';
 
 class App extends React.Component {
@@ -19,18 +21,23 @@ class App extends React.Component {
     }
 
     viewCurrentTab = (code) => {
-        console.log("Switch view to current tab");
         this.setState({nfcTabCode: code});
         this.setState({nfcCodeSubmitted: true});
     }
 
+    payCurrentTab = () => {
+
+    }
+
     render() {
         //var userView = this.state.isAuthenticated ? <HomePage /> : <LoginHandler userLogin={this.userLogin} />;
-        var getNFC = this.state.nfcCodeSubmitted ? <ViewTab isAuthenticated={this.state.isAuthenticated} /> : <NFCReader viewTab={this.viewCurrentTab}/>;
+        var getTabID = this.state.nfcCodeSubmitted ? <ViewTab isAuthenticated={this.state.isAuthenticated} /> : <NFCReader viewTab={this.viewCurrentTab} />;
+
         return (
-            <div id="appContainer">
-                {getNFC}
-            </div>
+            <Router>
+                <Route path='/' exact component={NFCReader} />
+                <Route path='/login' exact component={Login} />
+            </Router>
         );
     }
 
