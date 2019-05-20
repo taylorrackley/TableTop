@@ -1,18 +1,9 @@
 import React, { Component } from 'react';
 import './nfcReader.css';
-import Navbar from '../navbar/navbar'
+import Navbar from '../navbar/navbar';
+import { Link } from 'react-router-dom';
 
 class NFCReader extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-
-        }
-    }
-
-    viewTab = () => {
-        this.props.viewTab();
-    }
 
     render() {
         return (
@@ -20,7 +11,7 @@ class NFCReader extends Component {
                 <Navbar insertedText="" />
                 <div id="viewTab">
                     <p>NFC Reader</p>
-                    <button onClick={this.viewTab}>View Tab</button>
+                    <Link to='/tab/view'><button>View Tab</button></Link>
                 </div>
             </div>
         );

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './profile.css';
 import profileImage from '../../img/profile_image_icon.png';
 import closeIcon from '../../img/close_icon.png';
+import { Link } from 'react-router-dom';
 
 class Profile extends Component {
     constructor(props) {
@@ -24,7 +25,7 @@ class Profile extends Component {
                 <img id="close-profile-view" src={closeIcon} onClick={this.closeProfileView} alt="Close Profile View" />
                 <img id="profile-image" src={profileImage} alt="Profile" />
                 <p id="profile-view-username" className="profile-top-text" >{this.props.username}</p>
-                <p id="profile-view-edit-user-btn" className="profile-top-text">Edit Profile</p>
+                <Link to="/profile/edit"><p id="profile-view-edit-user-btn" className="profile-top-text">Edit Profile</p></Link>
             </div>
         );
     }

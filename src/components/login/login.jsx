@@ -29,12 +29,12 @@ class Login extends Component {
 
     render() {
         return (
-            <div id="loginView" className="gradient">
+            <div id="loginContainer" className="gradient">
                 <img id="loginLogo" src={logo} alt="Logo" />
                 <form onSubmit={this.handleSubmit} id="loginForm">
                     <div id="loginFormWrapper">
-                        <input id="username" name="username" className="input-field" type="text" onChange={this.handleChange} placeholder="Username" />
-                        <input id="password" name="password" className="input-field" type="password" onChange={this.handleChange} placeholder="Password" />
+                        <input id="username" name="username" className="loginInputField" type="text" onChange={this.handleChange} placeholder="Username" />
+                        <input id="password" name="password" className="loginInputField" type="password" onChange={this.handleChange} placeholder="Password" />
                         <button id="loginBtn">Login</button>
                     </div>
                 </form>

@@ -1,10 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+
+import NFCReader from './components/nfcReader/nfcReader';
 import Login from './components/login/login';
+import ViewTab from './components/viewTab/viewTab';
+import EditProfile from './components/profile/editProfile/editProfile';
+
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
+
 import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './store/reducers/rootReducer'
 import { Provider } from 'react-redux';
@@ -15,8 +20,12 @@ const store = createStore(rootReducer, applyMiddleware(thunk));
 const routing = (
     <Provider store={store}>
         <Router>
-            <Route path='/' exact component={App} />
-            <Route path='/login' exact component={Login} />
+            <Switch>
+                <Route path='/' exact component={NFCReader} />
+                <Route path='/login' exact component={Login} />
+                <Route path='/tab/view' exact component={ViewTab} />
+                <Route path='/profile/edit' exact component={EditProfile} />
+            </Switch>
         </Router>
     </Provider>
 );
