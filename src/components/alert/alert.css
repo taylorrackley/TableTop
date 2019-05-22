@@ -1,0 +1,18 @@
+#alertContainer {
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#thanks-for-using-tabletop {
+    font-size: 22px;
+}
+
+#alertText {
+    margin-top: 35px;
+    font-size: 14px;
+}
+
+#pin-input::placeholder {
+    color: #FFF;
+}

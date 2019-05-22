@@ -16,7 +16,7 @@
   }
 }
 
-#profile-container {
+#profileContainer {
     position: absolute;
     background-color: #D80303;
     top: 0;
@@ -37,14 +37,14 @@
     animation: shrink-right cubic-bezier(0.50, 0.50, 0.50, 0.50) 0.2s forwards;
 }
 
-#close-profile-view {
+#closeProfileView {
     height: 25px;
     width: 25px;
     float: right;
     margin: 25px;
 }
 
-#profile-image {
+#profileImage {
     width: 100px;
     height: 100px;
     display: block;
@@ -53,20 +53,20 @@
     margin-bottom: 15px;
 }
 
-.profile-top-text {
+.profileTopText {
     text-align: center;
     color: #FFF;
     margin: 0px;
     padding: 0px;
 }
 
-#profile-view-username {
+#profileViewUsername {
     font-size: 20px;
     font-weight: 600;
     margin-bottom: 5px;
 }
 
-#profile-view-edit-user-btn {
+#profileViewEditUserBtn {
     font-size: 16px;
     font-weight: 200;
 }

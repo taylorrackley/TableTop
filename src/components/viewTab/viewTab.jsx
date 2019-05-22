@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import './viewTab.css';
+
 import Navbar from '../navbar/navbar';
 import ViewTabDetails from './viewTabDetails/viewTabDetails';
-import ViewTabNextViewBtn from './viewTabNextViewBtn/viewTabNextViewBtn';
+import PayTabBtn from './payTabBtn/payTabBtn';
 import ViewTabOverview from './viewTabOverview/viewTabOverview';
+
+import { Redirect } from 'react-router-dom';
 
 class ViewTab extends Component {
     constructor(props) {
@@ -31,7 +34,7 @@ class ViewTab extends Component {
     }
 
     componentDidMount() {
-        console.log(this.state.tabDetails.items);
+        // console.log(this.state.tabDetails.items);
        setTimeout(() => {
            this.setState({animatePayTabContainer: 'view-visible'});
        }, 0);
@@ -45,12 +48,18 @@ class ViewTab extends Component {
     // }
     
     render() {
+        if(false) {
+            return (
+                <Redirect push to='/' />
+            );
+        }
+
         return (
-            <div id="paytab-container" className={'gradient '+this.state.animatePayTabContainer}>
+            <div className={'container gradient '+this.state.animatePayTabContainer}>
                 <Navbar insertedText="Your Tab:" />
                 <ViewTabOverview tabDetails={this.state.tabDetails} />
                 <ViewTabDetails tabDetails={this.state.tabDetails} />
-                <ViewTabNextViewBtn />
+                <PayTabBtn />
             </div>
         );
     }

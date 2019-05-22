@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import './login.css';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom'
 import logo from '../../img/logo.png';
-import { userLogin } from '../../store/actions/accountActions';
+
+import { connect } from 'react-redux';
+
+import { Link, Redirect } from 'react-router-dom'
+import { userLoginDefault } from '../../store/actions/authActions';
 
 class Login extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            username: '',
+            email: '',
             password: ''
         };
     }
@@ -23,32 +25,47 @@ class Login extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        this.props.userLogin(this.state);
-        // this.props.userLogin(this.state.username, this.state.password);
+        this.props.userLoginDefault(this.state);
     }
 
     render() {
+        
+        if(this.props.auth.uid) {
+            return( <Redirect to='/' /> );
+        }      
+
         return (
             <div id="loginContainer" className="gradient">
                 <img id="loginLogo" src={logo} alt="Logo" />
                 <form onSubmit={this.handleSubmit} id="loginForm">
                     <div id="loginFormWrapper">
-                        <input id="username" name="username" className="loginInputField" type="text" onChange={this.handleChange} placeholder="Username" />
-                        <input id="password" name="password" className="loginInputField" type="password" onChange={this.handleChange} placeholder="Password" />
+                        <input id="username" name="email" className="loginInputField" type="text" onChange={this.handleChange} value={this.state.email} placeholder="Email" />
+                        <input id="password" name="password" className="loginInputField" type="password" onChange={this.handleChange} value={this.state.password} placeholder="Password" />
                         <button id="loginBtn">Login</button>
                     </div>
                 </form>
                 <Link to='/profile/create'><p id="createAccount">Create Account</p></Link>
+                <div>
+                    { this.props.authError ? <p>Invalid Login</p> : null}
+                </div>
             </div>
         );
     }
 
 }
 
-const mapDispatchProps = (dispatch) => {
+const mapStateToProps = (state) => {
+    console.log(state);
     return {
-        userLogin: (data) => dispatch(userLogin(data)) // Username and password are passed from this.state
+        auth: state.firebase.auth,
+        authError: state.auth.authError
     }
 }
 
-export default connect(null, mapDispatchProps)(Login);
+const mapDispatchProps = (dispatch) => {
+    return {
+        userLoginDefault: (userCredentials) => dispatch(userLoginDefault(userCredentials)) // Username and password are passed from this.state
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchProps)(Login);

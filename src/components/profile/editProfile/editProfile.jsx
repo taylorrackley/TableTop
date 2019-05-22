@@ -4,8 +4,6 @@ import profileImage from '../../../img/profile_image_red_icon.png';
 
 import Navbar from '../../navbar/navbar';
 
-import { Link } from 'react-router-dom';
-
 class EditProfile extends Component {
 
     constructor(props) {
@@ -39,7 +37,7 @@ class EditProfile extends Component {
 
     render() {
         return (
-            <div id="editProfileContainer">
+            <div className="container">
                 <Navbar insertedText="" />
                 <div id="editProfileWrapper">
                     <img id="editProfileImage" src={profileImage} alt="Profile" />

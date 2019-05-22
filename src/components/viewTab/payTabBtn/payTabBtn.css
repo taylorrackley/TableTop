@@ -1,4 +1,4 @@
-#payTabNextViewContainer {
+#payTabBtnContainer {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -8,7 +8,7 @@
     z-index: 20;
 }
 
-#payTabNextViewBtn {
+#payTabBtn {
     margin: 0 auto;
     margin-top: 18px;
     padding: 10px;

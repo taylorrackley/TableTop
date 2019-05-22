@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import './profile.css';
+
 import profileImage from '../../img/profile_image_icon.png';
 import closeIcon from '../../img/close_icon.png';
+import UserSignedInProfileLinks from './profileLinks/userSignedInProfileLinks';
+import UserSignedOutLinks from './profileLinks/userSignedOutLinks';
+
 import { Link } from 'react-router-dom';
+
+import { connect } from 'react-redux';
 
 class Profile extends Component {
     constructor(props) {
@@ -20,15 +26,25 @@ class Profile extends Component {
     }
 
     render() {
+        const { auth } = this.props;
+        const links = auth.uid ? <UserSignedInProfileLinks /> : <UserSignedOutLinks />;
+
         return (
-            <div id="profile-container" className={this.state.animateProfileView}>
-                <img id="close-profile-view" src={closeIcon} onClick={this.closeProfileView} alt="Close Profile View" />
-                <img id="profile-image" src={profileImage} alt="Profile" />
-                <p id="profile-view-username" className="profile-top-text" >{this.props.username}</p>
-                <Link to="/profile/edit"><p id="profile-view-edit-user-btn" className="profile-top-text">Edit Profile</p></Link>
+            <div id="profileContainer" className={this.state.animateProfileView}>
+                <img id="closeProfileView" src={closeIcon} onClick={this.closeProfileView} alt="Close Profile View" />
+                <img id="profileImage" src={profileImage} alt="Profile" />
+                <p id="profileViewUsername" className="profileTopText" >{this.props.username}</p>
+                <Link to="/profile/edit"><p id="profileViewEditUserBtn" className="profileTopText">Edit Profile</p></Link>
+                { links }
             </div>
         );
     }
 }
 
-export default Profile;
+const mapStateToProps = (state) => {
+    return {
+        auth: state.firebase.auth
+    };
+}
+
+export default connect(mapStateToProps)(Profile);
