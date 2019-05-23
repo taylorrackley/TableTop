@@ -8,9 +8,9 @@ import { userLogout } from '../../../store/actions/authActions';
 class UserSignedInProfileLinks extends Component {
 
     render() {
-        // if(!this.props.auth.uid) { // When user logs out wait for state to change then redirect to login page
-        //     return( <Redirect to='/login' /> );
-        // }   
+        if(!this.props.auth.uid) { // When user logs out redirect them
+            return( <Redirect to='/login' /> );
+        }   
 
         return (
             <div id="profileLinksContainer">

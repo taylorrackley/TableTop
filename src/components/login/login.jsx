@@ -29,10 +29,6 @@ class Login extends Component {
     }
 
     render() {
-        
-        if(this.props.auth.uid) {
-            return( <Redirect to='/' /> );
-        }      
 
         return (
             <div id="loginContainer" className="gradient">
