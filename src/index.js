@@ -23,12 +23,13 @@ import thunk from 'redux-thunk';
 import { reduxFirestore, getFirestore } from 'redux-firestore';
 import { reactReduxFirebase, getFirebase } from 'react-redux-firebase';
 import firebaseConfig from './config/fb.config';
+import CreateProfile from './components/profile/createProfile/createProfile';
 
 const store = createStore(rootReducer, 
     compose (
         applyMiddleware( thunk.withExtraArgument({getFirebase, getFirestore})),
         reduxFirestore(firebaseConfig),
-        reactReduxFirebase(firebaseConfig, {attachAuthIsReady: true})
+        reactReduxFirebase(firebaseConfig, {useFirestoreForProfile: true, userProfile: 'users', attachAuthIsReady: true})
     )
 );
 
@@ -41,6 +42,7 @@ const routing = (
                 <Route path='/tab/view' exact component={ViewTab} />
                 <Route path='/tab/pay' excact component={PayTab} />
                 <Route path='/profile/edit' exact component={EditProfile} />
+                <Route path='/profile/create' exact component={CreateProfile} />
             </Switch>
         </Router>
     </Provider>

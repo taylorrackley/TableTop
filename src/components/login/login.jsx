@@ -30,6 +30,10 @@ class Login extends Component {
 
     render() {
 
+        if(this.props.auth.uid) {
+            return( <Redirect to='/' /> );
+        }   
+
         return (
             <div id="loginContainer" className="gradient">
                 <img id="loginLogo" src={logo} alt="Logo" />
@@ -40,10 +44,10 @@ class Login extends Component {
                         <button id="loginBtn">Login</button>
                     </div>
                 </form>
-                <Link to='/profile/create'><p id="createAccount">Create Account</p></Link>
-                <div>
-                    { this.props.authError ? <p>Invalid Login</p> : null}
+                <div id="loginFormWrapper">
+                    { this.props.authError ? <div className="invalidFormInputWhite">Invalid email or password</div> : null}
                 </div>
+                <Link to='/profile/create'><p id="createAccount">Create Account</p></Link>
             </div>
         );
     }
@@ -51,7 +55,6 @@ class Login extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state);
     return {
         auth: state.firebase.auth,
         authError: state.auth.authError

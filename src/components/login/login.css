@@ -70,3 +70,18 @@
 #createAccount:hover {
     cursor: pointer;
 }
+
+.invalidFormInputWhite {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    color: #B20404;
+    box-sizing: border-box;
+    margin-top: 15px;
+    background-color: #FFF;
+    border: 1px solid #FFF;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+}

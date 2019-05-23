@@ -26,14 +26,13 @@ class Profile extends Component {
     }
 
     render() {
-        const { auth } = this.props;
-        const links = auth.uid ? <UserSignedInProfileLinks /> : <UserSignedOutLinks />;
+        const links = this.props.auth.uid ? <UserSignedInProfileLinks /> : <UserSignedOutLinks />;
 
         return (
             <div id="profileContainer" className={this.state.animateProfileView}>
                 <img id="closeProfileView" src={closeIcon} onClick={this.closeProfileView} alt="Close Profile View" />
                 <img id="profileImage" src={profileImage} alt="Profile" />
-                <p id="profileViewUsername" className="profileTopText" >{this.props.username}</p>
+                <p id="profileViewUsername" className="profileTopText" >{this.props.profile.firstName + ' ' + this.props.profile.lastName}</p>
                 <Link to="/profile/edit"><p id="profileViewEditUserBtn" className="profileTopText">Edit Profile</p></Link>
                 { links }
             </div>
@@ -42,8 +41,10 @@ class Profile extends Component {
 }
 
 const mapStateToProps = (state) => {
+    console.log(state);
     return {
-        auth: state.firebase.auth
+        auth: state.firebase.auth,
+        profile: state.firebase.profile
     };
 }
 
