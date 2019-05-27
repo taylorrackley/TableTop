@@ -1,19 +1,28 @@
-#pin-container {
-    width: 100%;
-    padding-top: 10px;
-    padding-bottom: 10px;
+#pinWrapper {
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 100px;
+    padding: 30px;
+    padding-left: 40px;
+    padding-right: 40px; 
+    border: 1px solid #B20404;
+    border-radius: 40px;
 }
 
-#thanks-for-using-tabletop {
+#pinHeader {
+    color: #FFF;
     font-size: 22px;
+    font-weight: 600;
+    text-align: center;
 }
 
-#enter-pin-txt {
+#enterPinTxt {
     margin-top: 35px;
-    font-size: 14px;
+    font-size: 18px;
+    color: #FFF;
 }
 
-#pin-input {
+#pinInput {
     display: block;
     margin: 0 auto;
     margin-top: 25px;
@@ -28,6 +37,6 @@
     border-bottom: 4px solid #FFF;
 }
 
-#pin-input::placeholder {
+#pinInput::placeholder {
     color: #FFF;
 }

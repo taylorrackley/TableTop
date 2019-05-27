@@ -39,13 +39,6 @@ class ViewTab extends Component {
            this.setState({animatePayTabContainer: 'view-visible'});
        }, 0);
     }
-
-    // closeTabView = () => {
-    //     this.setState({animatePayTabContainer: 'view-invisable'});
-    //     setTimeout(() => {
-    //         this.props.hidePayTabView();
-    //     }, 300);
-    // }
     
     render() {
         if(false) {

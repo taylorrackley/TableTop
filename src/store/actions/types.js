@@ -6,4 +6,7 @@ export const LOGOUT_FAILURE = 'LOGOUT_FAILURE';
 export const USER_SIGNUP_SUCCESS = 'USER_SIGNUP_SUCCESS';
 export const USER_SIGNUP_FAILURE = 'USER_SIGNUP_FAILURE';
 
+export const SUBMIT_CUSTOMER_SURVEY = 'SUBMIT_CUSTOMER_SURVEY';
+export const SUBMIT_CUSTOMER_SURVEY_FAILED = 'SUBMIT_CUSTOMER_SURVEYS_FAILED';
+
 export const FETCH_TAB = 'FETCH_TAB'; // Get a table's tab which holds their meals and costs

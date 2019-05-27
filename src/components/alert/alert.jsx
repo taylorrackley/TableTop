@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import './alert.css';
+import logo from '../../img/logo_white.png';
 
 class Alert extends Component {
 
     render() {
         return (
-            <div id="alertContainer">
-                <p id="thanks-for-using-tabletop" className="bold">Thanks for using<br/>TableTop</p>
-                <p id="alertText">Enter the four digit pin on your receipt</p>
-                <div id="view-total-btn" onClick={this.goToCheckDetails} className={"btn " + ''}>View Total</div>
+            <div className="container">
+                <div id="alertWrapper" className="gradient">
+                    <img id="alertLogo" src={logo} alt="Logo" />
+                    <p id="alertText">{this.props.alertText}</p>
+                    <div id="alertGoToNextViewBtn" onClick={this.props.nextViewBtnFunc} className="btn">{this.props.nextViewBtnText}</div>
+                </div>
             </div>
         );
     }

@@ -4,9 +4,10 @@ import * as serviceWorker from './serviceWorker';
 import './index.css';
 
 // Import components
-import NFCReader from './components/nfcReader/nfcReader';
+import TablePin from './components/viewTab/tablePin/tablePin';
 import Login from './components/login/login';
 import ViewTab from './components/viewTab/viewTab';
+import TabSurvey from './components/survey/tabSurvey';
 import PayTab from './components/payTab/payTab';
 import EditProfile from './components/profile/editProfile/editProfile';
 
@@ -37,10 +38,11 @@ const routing = (
     <Provider store={store}>
         <Router>
             <Switch>
-                <Route path='/' exact component={NFCReader} />
+                <Route path='/' exact component={TablePin} />
                 <Route path='/login' exact component={Login} />
                 <Route path='/tab/view' exact component={ViewTab} />
                 <Route path='/tab/pay' excact component={PayTab} />
+                <Route path='/tab/survey' exact component={TabSurvey} />
                 <Route path='/profile/edit' exact component={EditProfile} />
                 <Route path='/profile/create' exact component={CreateProfile} />
             </Switch>

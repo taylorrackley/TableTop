@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import './editProfile.css';
 import profileImage from '../../../img/profile_image_red_icon.png';
 
-import Navbar from '../../navbar/navbar';
-
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom'
 
@@ -87,7 +85,7 @@ class EditProfile extends Component {
         //     emailError = 'Invalid email';
         // }
 
-        if(this.state.password.length < 6) {
+        if(this.state.password !== '' && this.state.password.length < 6) {
             passwordError = 'Password must be 6 characters long';
         }
 
@@ -111,8 +109,9 @@ class EditProfile extends Component {
             zipError = 'Zip is blank';
         }
 
+        this.setState({firstNameError, lastNameError, dobError, emailError, passwordError, passwordConfirmError, addressError, cityError, stateError, zipError});
+
         if(firstNameError || lastNameError || dobError || emailError || passwordError || passwordConfirmError || addressError || cityError || stateError || zipError) {
-            this.setState({firstNameError, lastNameError, dobError, emailError, passwordError, passwordConfirmError, addressError, cityError, stateError, zipError});
             return false;
         }
 
@@ -126,32 +125,36 @@ class EditProfile extends Component {
 
         return (
             <div className="container">
-                <Navbar insertedText="" />
+                {/* <Navbar insertedText="" /> */}
                 <div id="editProfileWrapper">
                     <img id="editProfileImage" src={profileImage} alt="Profile" />
                     <p id="editProfleImageText">Edit Photo</p>
                     <form onSubmit={this.handleSubmit} id="editProfileForm">
                         <div className="editProfileInputSection">
                             <input name="firstName" className="editProfileInputField" type="text" onChange={this.handleChange} value={this.state.firstName} placeholder="First Name" />
-                            {this.state.firstNameError ? <div className="invalidFormInput">{this.state.firstNameError}</div> : ''}
+                            {this.state.firstNameError ? <div className="invalidFormInputEditProfile">{this.state.firstNameError}</div> : ''}
                             <input name="lastName" className="editProfileInputField" type="text" onChange={this.handleChange} value={this.state.lastName} placeholder="Last Name" />
-                            {this.state.lastNameError ? <div className="invalidFormInput">{this.state.lastNameError}</div> : ''}
+                            {this.state.lastNameError ? <div className="invalidFormInputEditProfile">{this.state.lastNameError}</div> : ''}
                             <input name="dob" className="editProfileInputField" type="text" onChange={this.handleChange} value={this.state.dob} placeholder="Date of Birth" />
-                            {this.state.dobError ? <div className="invalidFormInput">{this.state.dobError}</div> : ''}
+                            {this.state.dobError ? <div className="invalidFormInpuEditProfile">{this.state.dobError}</div> : ''}
                             {/* <input name="email" className="editProfileInputField" type="email" onChange={this.handleChange} value={this.state.email} placeholder="Email" /> */}
                         </div>
                         <div className="editProfileInputSection">
                             {/* <input name="username" className="editProfileInputField" type="text" onChange={this.handleChange} placeholder="Username" /> */}
                             <input name="password" className="editProfileInputField" type="password" onChange={this.handleChange} value={this.state.password} placeholder="Password" />
-                            {this.state.passwordError ? <div className="invalidFormInput">{this.state.passwordError}</div> : ''}
+                            {this.state.passwordError ? <div className="invalidFormInputEditProfile">{this.state.passwordError}</div> : ''}
                             <input name="confirmPassword" className="editProfileInputField" type="password" onChange={this.handleChange} value={this.state.passwordConfirm} placeholder="Confirm Password" />
-                            {this.state.passwordConfirmError ? <div className="invalidFormInput">{this.state.passwordConfirmError}</div> : ''}
+                            {this.state.passwordConfirmError ? <div className="invalidFormInputEditProfile">{this.state.passwordConfirmError}</div> : ''}
                         </div>
                         <div className="editProfileInputSection">
                             <input name="address" className="editProfileInputField" type="text" onChange={this.handleChange} value={this.state.address} placeholder="Address" />
+                            {this.state.addressError ? <div className="invalidFormInputEditProfile">{this.state.addressError}</div> : ''}
                             <input name="city" className="editProfileInputField editProfileInputLeft" type="text" onChange={this.handleChange} value={this.state.city} placeholder="City" />
                             <input name="state" className="editProfileInputField editProfileInputCenter" type="text" onChange={this.handleChange} value={this.state.state} placeholder="State" />
                             <input name="zip" className="editProfileInputField editProfileInputRight" type="text" onChange={this.handleChange} value={this.state.zip} placeholder="ZIP" />
+                            {this.state.cityError ? <div className="invalidFormInputEditProfile">{this.state.cityError}</div> : ''}
+                            {this.state.stateError ? <div className="invalidFormInputEditProfile">{this.state.stateError}</div> : ''}
+                            {this.state.zipError ? <div className="invalidFormInputEditProfile">{this.state.zipError}</div> : ''}
                         </div>
                         <button className="editProfileInputField editProfileSubmit">Update Account</button>
                     </form>

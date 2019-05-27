@@ -1,22 +1,15 @@
 import React, { Component } from 'react';
 import './tablePin.css';
 
+import { Redirect } from 'react-router-dom'
+
 class TablePin extends Component {
     constructor(props) {
         super(props);
         this.state = {
             pin: '',
-            validPin: false
-        }
-    }
-
-    componentDidMount(){
-    }
-
-    // Remove pin view component from screen and go onto next screen
-    goToCheckDetails = () => {
-        if(this.state.validPin) {
-            this.props.goToCheckDetails(this.state.pin);
+            validPin: false,
+            redirect: false
         }
     }
 
@@ -32,13 +25,27 @@ class TablePin extends Component {
         }
     }
 
+    goToTab = () => {
+        if(this.state.validPin) {
+            // send action for pin
+            this.setState({redirect: true});
+        }
+    }
+
     render() {
+
+        if(this.state.redirect) {
+            return <Redirect to="/tab/view" />;
+        }
+
         return (
-            <div id="pin-container">
-                <p id="thanks-for-using-tabletop" className="bold">Thanks for using<br/>TableTop</p>
-                <p id="enter-pin-txt">Enter the four digit pin on your receipt</p>
-                <input id="pin-input" type="text" value={this.state.pin} onChange={this.changePinValue} placeholder="0000" maxLength="4" />
-                <div id="view-total-btn" onClick={this.goToCheckDetails} className={"btn " + ''}>View Total</div>
+            <div className="container">
+                <div id="pinWrapper" className="gradient">
+                    <p id="pinHeader">Thanks for using<br/>TableTop</p>
+                    <p id="enterPinTxt">Enter the four digit pin on your receipt</p>
+                    <input id="pinInput" type="text" value={this.state.pin} onChange={this.changePinValue} placeholder="0000" maxLength="4" />
+                    <div className="btn" onClick={this.goToTab}>View Tab</div>
+                </div>
             </div>
         );
     }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './login.css';
-import logo from '../../img/logo.png';
+import logo from '../../img/logo_white.png';
 
 import { connect } from 'react-redux';
 

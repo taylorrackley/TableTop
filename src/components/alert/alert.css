@@ -1,18 +1,28 @@
-#alertContainer {
-    width: 100%;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
-#thanks-for-using-tabletop {
-    font-size: 22px;
+#alertLogo {
+    width: 80%;
+    display: block;
+    margin: 0 auto;
 }
 
 #alertText {
-    margin-top: 35px;
-    font-size: 14px;
+    color: #FFF;
+    margin-top: 10px;
+    font-size: 18px;
+    text-align: left;
 }
 
-#pin-input::placeholder {
-    color: #FFF;
+#alertWrapper {
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 100px;
+    padding: 30px;
+    padding-left: 40px;
+    padding-right: 40px; 
+    border: 1px solid #B20404;
+    border-radius: 40px;
+}
+
+#alertGoToNextViewBtn {
+    font-size: 20px;
+    padding: 10px;
 }

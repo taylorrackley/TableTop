@@ -1,0 +1,16 @@
+#tabSurveyRestaurantTitle {
+    position: absolute;
+    top: 10%;
+    width: 100%;
+    font-size: 26px;
+    font-weight: 600;
+    text-align: center;
+    color: #FFF;
+}
+
+#tabSurveyBackgroundLogo {
+    display: block;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 35vh;
+}
