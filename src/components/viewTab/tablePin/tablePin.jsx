@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './tablePin.css';
 
+import Navbar from '../../navbar/navbar';
+
 import { Redirect } from 'react-router-dom'
 
 class TablePin extends Component {
@@ -40,6 +42,7 @@ class TablePin extends Component {
 
         return (
             <div className="container">
+                <Navbar />
                 <div id="pinWrapper" className="gradient">
                     <p id="pinHeader">Thanks for using<br/>TableTop</p>
                     <p id="enterPinTxt">Enter the four digit pin on your receipt</p>

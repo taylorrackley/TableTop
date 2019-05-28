@@ -1,3 +1,7 @@
+#tabSurveyContainer {
+    overflow: hidden;
+}
+
 #tabSurveyRestaurantTitle {
     position: absolute;
     top: 10%;
@@ -13,4 +17,27 @@
     width: 50%;
     margin: 0 auto;
     margin-top: 35vh;
+}
+
+/* Transition styles */
+.surveyViewSlide-enter {
+    position: absolute;
+    top: 100vh;
+}
+
+.surveyViewSlide-enter.surveyViewSlide-enter-active {
+    position: absolute;
+    top: 20vh;
+    transition: all 800ms ease-in;
+}
+
+.surveyViewSlide-exit {
+    position: absolute;
+    top: 20%;
+}
+
+.surveyViewSlide-exit.surveyViewSlide-exit-active {
+    position: absolute;
+    top: 100vh;
+    transition: all 700ms ease-out;
 }

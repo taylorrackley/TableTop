@@ -10,46 +10,43 @@ class EditProfile extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            firstName: '',
-            lastName: '',
-            dob: '',
-            // email: '',
-            // username: '',
+            profile: {
+                firstName: '',
+                lastName: '',
+                date_of_birth: '',
+                address: '',
+                city: '',
+                state: '',
+                zip: ''
+            },
             password: '',
             confirmPassword: '',
-            address: '',
-            city: '',
-            state: '',
-            zip: '',
-            firstNameError: '',
-            lastNameError: '',
-            dobError: '',
-            emailError: '',
-            passwordError: '',
-            passwordConfirmError: '',
-            addressError: '',
-            cityError: '',
-            stateError: '',
-            zipError: ''
+            formErrors: {
+                firstName: '',
+                lastName: '',
+                dateOfBirth: '',
+                email: '',
+                password: '',
+                passwordConfirm: '',
+                address: '',
+                city: '',
+                state: '',
+                zip: ''
+            }
         };
     }
 
-    componentWillReceiveProps = (newProps) => {
-        this.setState({
-            firstName: newProps.profile.firstName,
-            lastName: newProps.profile.lastName,
-            dob: newProps.profile.date_of_birth,
-            address: newProps.profile.address,
-            city: newProps.profile.city,
-            state: newProps.profile.state,
-            zip: newProps.profile.zip
-            // email: newProps.profile.email
-        });
+    componentDidUpdate(prevProps) {
+        if(Object.keys(this.props.profile).length !== Object.keys(prevProps.profile).length) {
+            this.setState({profile: this.props.profile});
+        }
     }
 
     handleChange = (e) => {
         this.setState({
-            [e.target.name]: e.target.value
+            profile: {
+                [e.target.name]: e.target.value
+            }
         });
     }
 
@@ -62,23 +59,27 @@ class EditProfile extends Component {
     }
 
     validForm = () => {
-        let firstNameError = '';
-        let lastNameError = '';
-        let dobError = '';
-        let emailError = '';
-        let passwordError = '';
-        let passwordConfirmError = '';
-        let addressError = '';
-        let cityError = '';
-        let stateError = '';
-        let zipError = '';
+        this.setState({
+            formErrors: {
+                firstName: '',
+                lastName: '',
+                dateOfBirth: '',
+                email: '',
+                password: '',
+                passwordConfirm: '',
+                address: '',
+                city: '',
+                state: '',
+                zip: ''
+            }
+        });
 
-        if(this.state.firstName === '') {
-            firstNameError = 'First name is blank';
+        if(this.state.profile.firstName === '') {
+            this.setState({formErrors: {firstName: 'First name is blank'}});
         }
 
-        if(this.state.lastName === '') {
-            lastNameError = 'Last name is blank';
+        if(this.state.profile.lastName === '') {
+            this.setState({formErrors: {lastName: 'Last name is blank'}});
         }
 
         // if(!this.state.email.includes('@')) {
@@ -86,32 +87,30 @@ class EditProfile extends Component {
         // }
 
         if(this.state.password !== '' && this.state.password.length < 6) {
-            passwordError = 'Password must be 6 characters long';
+            this.setState({formErrors: {password: 'Password must be 6 characters long'}});
         }
 
         if(this.state.password !== this.state.confirmPassword) {
-            passwordConfirmError = 'Passwords do not match';
+            this.setState({formErrors: {passwordConfirm: 'Passwords do not match'}});
         }
 
-        if(this.state.address === '') {
-            addressError = 'Address is blank';
+        if(this.state.profile.address === '') {
+            this.setState({formErrors: {address: 'Address is blank'}});
         }
 
-        if(this.state.city === '') {
-            cityError = 'City is blank';
+        if(this.state.profile.city === '') {
+            this.setState({formErrors: {city: 'City is blank'}});
         }
 
-        if(this.state.state === '') {
-            stateError = 'State is blank';
+        if(this.state.profile.state === '') {
+            this.setState({formErrors: {state: 'State is blank'}});
         }
 
-        if(this.state.zip === '') {
-            zipError = 'Zip is blank';
+        if(this.state.profile.zip === '') {
+            this.setState({formErrors: {zip: 'Zip is blank'}});
         }
 
-        this.setState({firstNameError, lastNameError, dobError, emailError, passwordError, passwordConfirmError, addressError, cityError, stateError, zipError});
-
-        if(firstNameError || lastNameError || dobError || emailError || passwordError || passwordConfirmError || addressError || cityError || stateError || zipError) {
+        if(this.state.formErrors) {
             return false;
         }
 
@@ -131,30 +130,30 @@ class EditProfile extends Component {
                     <p id="editProfleImageText">Edit Photo</p>
                     <form onSubmit={this.handleSubmit} id="editProfileForm">
                         <div className="editProfileInputSection">
-                            <input name="firstName" className="editProfileInputField" type="text" onChange={this.handleChange} value={this.state.firstName} placeholder="First Name" />
-                            {this.state.firstNameError ? <div className="invalidFormInputEditProfile">{this.state.firstNameError}</div> : ''}
-                            <input name="lastName" className="editProfileInputField" type="text" onChange={this.handleChange} value={this.state.lastName} placeholder="Last Name" />
-                            {this.state.lastNameError ? <div className="invalidFormInputEditProfile">{this.state.lastNameError}</div> : ''}
-                            <input name="dob" className="editProfileInputField" type="text" onChange={this.handleChange} value={this.state.dob} placeholder="Date of Birth" />
-                            {this.state.dobError ? <div className="invalidFormInpuEditProfile">{this.state.dobError}</div> : ''}
+                            <input name="firstName" className="editProfileInputField" type="text" onChange={this.handleChange} value={this.state.profile.firstName} placeholder="First Name" />
+                            {this.state.formErrors.firstName ? <div className="invalidFormInputEditProfile">{this.state.formErrors.firstName}</div> : ''}
+                            <input name="lastName" className="editProfileInputField" type="text" onChange={this.handleChange} value={this.state.profile.lastName} placeholder="Last Name" />
+                            {this.state.formErrors.lastName ? <div className="invalidFormInputEditProfile">{this.state.formErrors.lastName}</div> : ''}
+                            <input name="dob" className="editProfileInputField" type="text" onChange={this.handleChange} value={this.state.profile.date_of_birth} placeholder="Date of Birth" />
+                            {this.state.formErrors.dateOfBirth ? <div className="invalidFormInpuEditProfile">{this.state.formErrors.dateOfBirth}</div> : ''}
                             {/* <input name="email" className="editProfileInputField" type="email" onChange={this.handleChange} value={this.state.email} placeholder="Email" /> */}
                         </div>
                         <div className="editProfileInputSection">
                             {/* <input name="username" className="editProfileInputField" type="text" onChange={this.handleChange} placeholder="Username" /> */}
                             <input name="password" className="editProfileInputField" type="password" onChange={this.handleChange} value={this.state.password} placeholder="Password" />
-                            {this.state.passwordError ? <div className="invalidFormInputEditProfile">{this.state.passwordError}</div> : ''}
+                            {this.state.formErrors.password ? <div className="invalidFormInputEditProfile">{this.state.formErrors.password}</div> : ''}
                             <input name="confirmPassword" className="editProfileInputField" type="password" onChange={this.handleChange} value={this.state.passwordConfirm} placeholder="Confirm Password" />
-                            {this.state.passwordConfirmError ? <div className="invalidFormInputEditProfile">{this.state.passwordConfirmError}</div> : ''}
+                            {this.state.formErrors.passwordConfirm ? <div className="invalidFormInputEditProfile">{this.state.formErrors.passwordConfirm}</div> : ''}
                         </div>
                         <div className="editProfileInputSection">
-                            <input name="address" className="editProfileInputField" type="text" onChange={this.handleChange} value={this.state.address} placeholder="Address" />
-                            {this.state.addressError ? <div className="invalidFormInputEditProfile">{this.state.addressError}</div> : ''}
-                            <input name="city" className="editProfileInputField editProfileInputLeft" type="text" onChange={this.handleChange} value={this.state.city} placeholder="City" />
-                            <input name="state" className="editProfileInputField editProfileInputCenter" type="text" onChange={this.handleChange} value={this.state.state} placeholder="State" />
-                            <input name="zip" className="editProfileInputField editProfileInputRight" type="text" onChange={this.handleChange} value={this.state.zip} placeholder="ZIP" />
-                            {this.state.cityError ? <div className="invalidFormInputEditProfile">{this.state.cityError}</div> : ''}
-                            {this.state.stateError ? <div className="invalidFormInputEditProfile">{this.state.stateError}</div> : ''}
-                            {this.state.zipError ? <div className="invalidFormInputEditProfile">{this.state.zipError}</div> : ''}
+                         <input name="address" className="editProfileInputField" type="text" onChange={this.handleChange} value={this.state.profile.address} placeholder="Address" />
+                            {this.state.formErrors.address ? <div className="invalidFormInputEditProfile">{this.state.formErrors.address}</div> : ''}
+                            <input name="city" className="editProfileInputField editProfileInputLeft" type="text" onChange={this.handleChange} value={this.state.profile.city} placeholder="City" />
+                            <input name="state" className="editProfileInputField editProfileInputCenter" type="text" onChange={this.handleChange} value={this.state.profile.state} placeholder="State" />
+                            <input name="zip" className="editProfileInputField editProfileInputRight" type="text" onChange={this.handleChange} value={this.state.profile.zip} placeholder="ZIP" />
+                            {this.state.formErrors.city ? <div className="invalidFormInputEditProfile">{this.state.formErrors.city}</div> : ''}
+                            {this.state.formErrors.state ? <div className="invalidFormInputEditProfile">{this.state.formErrors.state}</div> : ''}
+                            {this.state.formErrors.zip ? <div className="invalidFormInputEditProfile">{this.state.formErrors.zip}</div> : ''}
                         </div>
                         <button className="editProfileInputField editProfileSubmit">Update Account</button>
                     </form>

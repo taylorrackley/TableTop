@@ -13,14 +13,6 @@ class Navbar extends Component {
         };
     }
 
-    // showPinView = () => {
-    //     this.setState({pinView: true});
-    // }
-    //
-    // hidePayTabView = () => {
-    //     this.setState({pinView: false});
-    // }
-
     showUserProfile = () => {
         this.setState({userProfile: true});
     }
@@ -31,7 +23,7 @@ class Navbar extends Component {
 
     render() {
         // var showPaytabModule = this.state.pinView ? <PayTab hidePayTabView={this.hidePayTabView} /> : '';
-        var showUserProfileModule = this.state.userProfile ? <Profile username={'Emma Grebe'} closeProfileView={this.hideUserProfile}/> : '';
+        var showUserProfileModule = this.state.userProfile ? <Profile closeProfileView={this.hideUserProfile}/> : '';
         return (
             <div id="navbar-container" className="clearfix">
                 <p id="insertedText">{this.props.insertedText}</p>
