@@ -27,7 +27,7 @@ export const customerSubmitSurveyWithComments = (survey) => {
             responses: survey.responses,
             customer_comments: survey.comments,
             user_id: userID,
-            survey_id: 'test', // This needs to access state and get current survey id
+            survey_id: 'test2', // This needs to access state and get current survey id
             created_at: new Date()
         }).then(() => {
             dispatch({type: SUBMIT_CUSTOMER_SURVEY, survey});

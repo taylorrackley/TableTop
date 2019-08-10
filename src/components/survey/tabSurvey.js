@@ -4,7 +4,7 @@ import logo from '../../img/logo_white.png';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import Alert from '../alert/alert';
-import SurveyCustomerFeedBack from './surveyCustomerFeedBack/surveyCustomerFeedBack';
+// import SurveyCustomerFeedBack from './surveyCustomerFeedBack/surveyCustomerFeedBack';
 import SurveyQuestion from './surveyQuestion/surveyQuestion';
 import Navbar from '../navbar/navbar';
 
@@ -24,28 +24,23 @@ class TabSurvey extends Component {
             questionNumber: 0,
             responses: [],
             customerFeedBack: '',
-            redirect: false
+            redirect: false,
+            finishSurvey: false
         };
     }
 
-    onQuestionAnswer = (e) => {
-        this.setState({repsonses: this.state.responses.push(e.currentTarget.getAttribute('value'))});
-        this.setState({questionNumber: this.state.questionNumber+1});
-        console.log(this.state);
-    }
-
-    onCustomerFeedBack = (comments) => {
-        this.setState({customerFeedBack: comments});
-    }
-
-    finishSurvey = () => {
-        if(this.state.customerFeedBack) {
-            this.props.submitSurveyWithComments({
-                responses: this.state.responses,
-                comments: this.state.customerFeedBack });
-        } else {
-            this.props.submitSurveyWithoutComments(this.state.repsonses);
+    onQuestionAnswer = (value) => {
+        this.setState({repsonses: this.state.responses.push(value)});
+        this.setState((state, props) => ({
+            questionNumber: state.questionNumber + 1
+        }));
+        if (this.props.survey[0].questions.length <= this.state.questionNumber) {
+            this.setState({finishSurvey: true});
         }
+    }
+
+    closeSurvey = () => {
+        this.props.submitSurveyWithoutComments(this.state.repsonses);
         this.setState({redirect: true});
     }
 
@@ -53,19 +48,14 @@ class TabSurvey extends Component {
         if(this.state.redirect) {
             return <Redirect to="/" />
         }
+        else if (this.state.finishSurvey) {
+            return <Alert alertText="Thanks for filling out the survey!" nextViewBtnFunc={this.closeSurvey} nextViewBtnText="Finish" />
+        }
 
         let question = '';
-        let surveyView = <SurveyQuestion question={question} onQuestionAnswer={this.onQuestionAnswer} />;;
-
-        if(this.props.survey) {
-            if(this.props.survey[0].questions.length > this.state.questionNumber) { // Cycle through questions
-                question = this.props.survey[0].questions[this.state.questionNumber]; // apply correct question to component
-                surveyView = <SurveyQuestion question={question} onQuestionAnswer={this.onQuestionAnswer} />;
-            } else if (this.props.survey[0].get_customer_input && !this.state.customerFeedBack) { // Get customer comments if applicable
-                surveyView = <SurveyCustomerFeedBack onCustomerFeedBack={this.onCustomerFeedBack} />;
-            } else { // Complete survey
-                return <Alert alertText="Thanks for filling out the survey!" nextViewBtnFunc={this.finishSurvey} nextViewBtnText="Finish" />
-            }
+        let key = this.state.questionNumber
+        if (this.props.survey) {
+            question = this.props.survey[0].questions[this.state.questionNumber]; // apply correct question to component
         }
 
         return (
@@ -75,7 +65,7 @@ class TabSurvey extends Component {
                 <img id="tabSurveyBackgroundLogo" src={logo} alt="Logo" />
                 <TransitionGroup>
                     <CSSTransition
-                        key={question}
+                        key={key}
                         appear={true}
                         timeout={900}
                         classNames="surveyViewSlide"
@@ -84,25 +74,11 @@ class TabSurvey extends Component {
                     </CSSTransition>
                 </TransitionGroup>
             </div>
-            // <div className="container gradient">
-            //     <Navbar />
-            //     <p id="tabSurveyRestaurantTitle">McDick</p>
-            //     <img id="tabSurveyBackgroundLogo" src={logo} alt="Logo" />
-            //     <CSSTransition
-            //         in={true}
-            //         appear={true}
-            //         timeout={10000}
-            //         classNames="surveyViewSlide"
-            //     >
-            //         {surveyView}
-            //     </CSSTransition>
-            // </div>
         );
     }
 }
 
 const mapStateToProps = (state) => {
-    //console.log(state);
     return {
         auth: state.firebase.auth,
         survey: state.firestore.ordered.surveys

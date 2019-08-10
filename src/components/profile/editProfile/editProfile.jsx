@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './editProfile.css';
 import profileImage from '../../../img/profile_image_red_icon.png';
 
+import MaskedInput from 'react-text-mask'
+
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom'
 
@@ -134,7 +136,11 @@ class EditProfile extends Component {
                             {this.state.formErrors.firstName ? <div className="invalidFormInputEditProfile">{this.state.formErrors.firstName}</div> : ''}
                             <input name="lastName" className="editProfileInputField" type="text" onChange={this.handleChange} value={this.state.profile.lastName} placeholder="Last Name" />
                             {this.state.formErrors.lastName ? <div className="invalidFormInputEditProfile">{this.state.formErrors.lastName}</div> : ''}
-                            <input name="dob" className="editProfileInputField" type="text" onChange={this.handleChange} value={this.state.profile.date_of_birth} placeholder="Date of Birth" />
+                            <MaskedInput
+                            name="dob" className="editProfileInputField" type="text" onChange={this.handleChange} value={this.state.profile.date_of_birth} placeholder="Date of Birth"
+                            mask={[/[0-1]/, /[0-9]/, '/', /[0-3]/, /[0-9]/, '/', /[1-2]/, /[0-9]/, /[0-9]/, /[0-9]/]}
+                            />
+                            {/* <input name="dob" className="editProfileInputField" type="text" onChange={this.handleChange} value={this.state.profile.date_of_birth} placeholder="Date of Birth" /> */}
                             {this.state.formErrors.dateOfBirth ? <div className="invalidFormInpuEditProfile">{this.state.formErrors.dateOfBirth}</div> : ''}
                             {/* <input name="email" className="editProfileInputField" type="email" onChange={this.handleChange} value={this.state.email} placeholder="Email" /> */}
                         </div>

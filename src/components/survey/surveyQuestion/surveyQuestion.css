@@ -12,9 +12,11 @@
 }
 
 #surveyQuestion {
+    display: block;
     font-size: 22px;
     font-weight: 600;
-    margin-left: 50px;
+    padding-left: 40px;
+    padding-right: 40px;
 }
 
 #surveyAnswerList {
@@ -23,25 +25,4 @@
     margin-left: 75px;
     margin-top: 50px;
     list-style-type: none;
-}
-
-#surveyAnswerList li {
-    display: flex;
-    margin-bottom: 25px;
-}
-
-.surveyAnswerText {
-    margin: auto;
-    margin-left: 35px;
-    font-weight: 600;
-    color: #000;
-    opacity: .6;
-}
-
-.circleIcon {
-    width: 35px;
-    height: 35px;
-    margin: 0 auto;
-    margin-left: 0px;
-    margin-right: 0px;
 }
