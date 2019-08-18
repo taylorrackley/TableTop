@@ -20,7 +20,7 @@ class TablePin extends Component {
         if (e.target.value === '' || pattern.test(e.target.value)) { // Make sure pin contains digits only
            this.setState({pin: e.target.value});
            if(e.target.value.length === 4) {
-               this.setState({validPin: true});
+                this.setState({validPin: true});
            } else {
                this.setState({validPin: false});
            }
@@ -29,7 +29,6 @@ class TablePin extends Component {
 
     goToTab = () => {
         if(this.state.validPin) {
-            // send action for pin
             this.setState({redirect: true});
         }
     }
@@ -37,7 +36,8 @@ class TablePin extends Component {
     render() {
 
         if(this.state.redirect) {
-            return <Redirect to="/tab/view" />;
+            console.log('Redirect to Tab');
+            return (<Redirect to={{ pathname: "/tab/view", state: { pin: this.state.pin } }} />);
         }
 
         return (

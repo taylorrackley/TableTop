@@ -5,8 +5,8 @@ class ViewTabOverview extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            total: this.props.tabDetails.total, // This should only be used for view of the user. Don't actually use this for payment
-            tip: this.props.tabDetails.tip,
+            total: this.props.tabDetails.total + this.props.tabDetails.subtotal * (this.props.tip/100), // This should only be used for view of the user. Don't actually use this for payment
+            tip: this.props.tabDetails.subtotal * (this.props.tip/100),
             tipPercentage: 20 // Should import default selection from user account
         }
     }
@@ -21,35 +21,39 @@ class ViewTabOverview extends Component {
     }
 
     render() {
-        return (
-            <div id="payTabOverviewContainer">
-                <div id="payTabOverviewGroup">
-                    <div className="clearfix">
-                        <div className="payTabOverviewLeft">Tab Total:</div>
-                        <div className="payTabOverviewRight">${this.props.tabDetails.subtotal.toFixed(2)}</div>
-                    </div>
-                    <div className="clearfix">
-                        <div className="payTabOverviewLeft">
-                            <p>Gratuity:</p>
-                            <select id="selectedTipPercentage" onChange={this.handleTipChange} value={this.state.tipPercentage}>
-                              <option value="0">0%</option>
-                              <option value="5">5%</option>
-                              <option value="10">10%</option>
-                              <option value="15">15%</option>
-                              <option value="20">20%</option>
-                              <option value="25">25%</option>
-                            </select>
+
+        if(this.props.tabDetails) {
+            return (
+                <div id="payTabOverviewContainer">
+                    <div id="payTabOverviewGroup">
+                        <div className="clearfix">
+                            <div className="payTabOverviewLeft">Tab Total:</div>
+                            <div className="payTabOverviewRight">${this.props.tabDetails.subtotal ? this.props.tabDetails.subtotal.toFixed(2) : ''}</div>
                         </div>
-                        <div className="payTabOverviewRight">${this.state.tip.toFixed(2)}</div>
+                        <div className="clearfix">
+                            <div className="payTabOverviewLeft">
+                                <p>Gratuity:</p>
+                                <select id="selectedTipPercentage" onChange={this.handleTipChange} value={this.state.tipPercentage}>
+                                <option value="0">0%</option>
+                                <option value="5">5%</option>
+                                <option value="10">10%</option>
+                                <option value="15">15%</option>
+                                <option value="20">20%</option>
+                                <option value="25">25%</option>
+                                </select>
+                            </div>
+                            <div className="payTabOverviewRight">${this.state.tip ? this.state.tip.toFixed(2) : ''}</div>
+                        </div>
+                        <div className="clearfix">
+                            <div className="payTabOverviewLeft">Tax:</div>
+                            <div className="payTabOverviewRight">${this.props.tabDetails.tax ? this.props.tabDetails.tax.toFixed(2) : ''}</div>
+                        </div>
                     </div>
-                    <div className="clearfix">
-                        <div className="payTabOverviewLeft">Tax:</div>
-                        <div className="payTabOverviewRight">${this.props.tabDetails.tax.toFixed(2)}</div>
-                    </div>
+                    <div id="totalHeader">${this.state.total ? this.state.total.toFixed(2) : ''}</div>
                 </div>
-                <div id="totalHeader">${this.state.total.toFixed(2)}</div>
-            </div>
-        );
+            );
+        }
+        return null;
     }
 }
 

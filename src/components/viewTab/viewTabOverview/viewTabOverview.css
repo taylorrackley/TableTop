@@ -1,5 +1,5 @@
 #payTabOverviewContainer {
-    margin-top: 100px;
+    margin-top: 80px;
     width: 100%;
 }
 
@@ -44,7 +44,7 @@
 }
 
 #totalHeader {
-    margin-top: 10px;
+    margin-top: 0px;
     font-size: 300%;
     font-weight: 700;
     color: #FFF;

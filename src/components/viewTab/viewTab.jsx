@@ -8,54 +8,61 @@ import ViewTabOverview from './viewTabOverview/viewTabOverview';
 
 import { Redirect } from 'react-router-dom';
 
+import { connect } from 'react-redux';
+import { firestoreConnect } from 'react-redux-firebase';
+import { compose } from 'redux';
+
+import { findTabWithPin } from '../../store/actions/tabActions';
+
 class ViewTab extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            animatePayTabContainer: 'view-invisable',
-            tabDetails: {
-                restaurant: 'McDick',
-                subtotal: 18.56,
-                tax: 1.30,
-                tip: 2.00,
-                total: 21.86,
-                items: [
-                    {name: 'Big Mac', price: 3.56},
-                    {name: 'Mac n Cheese', price: 1.00},
-                    {name: 'French Fries', price: 10.00},
-                    {name: 'Water', price: 0},
-                    {name: 'Side of Ranch Sauce', price: 0.50},
-                    {name: 'Side of Buffalo Sauce', price: 0.50},
-                    {name: 'Sweat Tea', price: 2.50},
-                    {name: 'Dr. Pepper', price: 2.50}
-                ]
-            }
+            animatePayTabContainer: 'view-invisable'
+            // Get user default tip %?
         }
     }
 
     componentDidMount() {
-        // console.log(this.state.tabDetails.items);
-       setTimeout(() => {
-           this.setState({animatePayTabContainer: 'view-visible'});
-       }, 0);
+        console.log('Mounted');
+        this.props.findTabWithPin(this.props.location.state.pin);
+        setTimeout(() => {
+            this.setState({animatePayTabContainer: 'view-visible'});
+        }, 0);
     }
     
+    componentDidUpdate() {
+    }
+
     render() {
-        if(false) {
+        if (this.props.tab) {
             return (
-                <Redirect push to='/' />
+                <div className={'container gradient '+this.state.animatePayTabContainer}>
+                    <Navbar insertedText="Your Tab:" />
+                    <ViewTabOverview tabDetails={this.props.tab} tip={20} />
+                    <ViewTabDetails tabDetails={this.props.tab} tip={20} />
+                    <PayTabBtn />
+                </div>
             );
         }
-
-        return (
-            <div className={'container gradient '+this.state.animatePayTabContainer}>
-                <Navbar insertedText="Your Tab:" />
-                <ViewTabOverview tabDetails={this.state.tabDetails} />
-                <ViewTabDetails tabDetails={this.state.tabDetails} />
-                <PayTabBtn />
-            </div>
-        );
+        return null;
     }
 }
 
-export default ViewTab;
+// Turns dispatch methods into prop methods
+const mapDispatchToProps = (dispatch) => {
+    return {
+        findTabWithPin: (pin) => dispatch(findTabWithPin(pin))
+    }
+}
+
+const mapStateToProps = (state) => {
+    return {
+        tab: state.tab.tab
+    };
+}
+
+export default compose(
+    firestoreConnect(),
+    connect(mapStateToProps, mapDispatchToProps)
+)(ViewTab);

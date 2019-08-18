@@ -15,11 +15,11 @@ class ViewTabDetails extends Component {
             <div id="tabDetailsContainer" className="clearfix">
                 <div id="tabDetailsWrapper">
                     <div id="stickToTop">
-                        <h2 id="tabDetailsRestaurantName">{this.props.tabDetails.restaurant}</h2>
+                        <h2 id="tabDetailsRestaurantName">{this.props.tabDetails.restaurant_name}</h2>
                         <hr/>
                     </div>
                     <div id="tabDetailsScroll">
-                        <ViewTabItems tabDetails={this.props.tabDetails} />
+                        <ViewTabItems tabDetails={this.props.tabDetails} tip={this.props.tip} />
                         <div className="spacerHeavy"></div>
                     </div>
                 </div>

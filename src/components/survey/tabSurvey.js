@@ -92,6 +92,7 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
+// Create Action to Get Survey?
 export default compose(
     firestoreConnect([{
         collection: 'surveys',

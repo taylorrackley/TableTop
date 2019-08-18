@@ -9,4 +9,6 @@ export const USER_SIGNUP_FAILURE = 'USER_SIGNUP_FAILURE';
 export const SUBMIT_CUSTOMER_SURVEY = 'SUBMIT_CUSTOMER_SURVEY';
 export const SUBMIT_CUSTOMER_SURVEY_FAILED = 'SUBMIT_CUSTOMER_SURVEYS_FAILED';
 
-export const FETCH_TAB = 'FETCH_TAB'; // Get a table's tab which holds their meals and costs
+// export const FETCH_TAB = 'FETCH_TAB'; // Get a table's tab which holds their meals and costs
+export const GET_CUSTOMER_TAB = 'GET_CUSTOMER_TAB';
+export const GET_CUSTOMER_TAB_FAILED = 'GET_CUSTOMER_TAB_FAILED';
