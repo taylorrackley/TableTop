@@ -1,4 +1,7 @@
-import { LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT_SUCCESS, LOGOUT_FAILURE, USER_SIGNUP_SUCCESS, USER_SIGNUP_FAILURE } from './types';
+import { LOGIN_SUCCESS, LOGIN_FAILURE,
+    LOGOUT_SUCCESS, LOGOUT_FAILURE,
+    USER_SIGNUP_SUCCESS, USER_SIGNUP_FAILURE,
+    USER_UPDATE_SUCCESS, USER_UPDATE_FAILURE } from './types';
 
 export const userLoginDefault = (credentials) => {
     return (dispatch, getState, {getFirebase}) => {
@@ -65,6 +68,30 @@ export const userSignUpDefault = (newUser) => {
             dispatch({type: USER_SIGNUP_SUCCESS});
         }).catch(error => {
             dispatch({type: USER_SIGNUP_FAILURE});
+        });
+
+    };
+}
+
+export const userUpdate = (profile) => {
+    return (dispatch, getState, {getFirebase, getFirestore}) => {
+        const firebase = getFirebase();
+        const firestore = getFirestore();
+
+        // profile = JSON.parse( JSON.stringify(profile) ) remove null values
+
+        firestore.collection('users').doc(firebase.auth().currentUser.uid).set({
+            first_name: profile.first_name,
+            last_name: profile.last_name,
+            date_of_birth: profile.date_of_birth,
+            address: profile.address,
+            city: profile.city,
+            state: profile.state,
+            zip: profile.zip
+        }).then(() => {
+            dispatch({type: USER_UPDATE_SUCCESS});
+        }).catch(error => {
+            dispatch({type: USER_UPDATE_FAILURE});
         });
 
     };

@@ -14,7 +14,7 @@ class UserSignedInProfileLinks extends Component {
 
         return (
             <div id="profileLinksContainer">
-                <Link to='/tab/view'><button className="profileLinksContainerBtn">Open Tab</button></Link>
+                <Link to='/'><button className="profileLinksContainerBtn">Open Tab</button></Link>
                 <hr/>
                 <button className="profileLinksContainerBtn">Recent Meals</button>
                 <hr/>

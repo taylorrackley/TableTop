@@ -7,26 +7,26 @@ import MaskedInput from 'react-text-mask'
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom'
 
+import { userUpdate } from '../../../store/actions/authActions'
+
 class EditProfile extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            profile: {
-                firstName: '',
-                lastName: '',
-                date_of_birth: '',
-                address: '',
-                city: '',
-                state: '',
-                zip: ''
-            },
+            first_name: this.props.profile.first_name || '',
+            last_name: this.props.profile.last_name || '',
+            date_of_birth: this.props.profile.date_of_birth || '',
+            address: this.props.profile.address || '',
+            city: this.props.profile.city || '',
+            state: this.props.profile.state || '',
+            zip: this.props.profile.zip || '',
             password: '',
             confirmPassword: '',
             formErrors: {
-                firstName: '',
-                lastName: '',
-                dateOfBirth: '',
+                first_name: '',
+                last_name: '',
+                date_of_birth: '',
                 email: '',
                 password: '',
                 passwordConfirm: '',
@@ -38,34 +38,36 @@ class EditProfile extends Component {
         };
     }
 
-    componentDidUpdate(prevProps) {
-        if(Object.keys(this.props.profile).length !== Object.keys(prevProps.profile).length) {
-            this.setState({profile: this.props.profile});
-        }
-    }
-
     handleChange = (e) => {
+        e.persist()
         this.setState({
-            profile: {
-                [e.target.name]: e.target.value
-            }
+            [e.target.name]: e.target.value
         });
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
         if(this.validForm()) {
-            console.log('update is valid');
-            // this.props.userSignUpDefault(this.state);
+            let profile = {
+                first_name: this.state.first_name,
+                last_name: this.state.last_name,
+                date_of_birth: this.state.date_of_birth,
+                address: this.state.address,
+                city: this.state.city,
+                state: this.state.state,
+                zip: this.state.zip
+            }
+            this.props.userUpdate(profile);
+            this.state.profileUpdated = true
         }
     }
 
     validForm = () => {
         this.setState({
             formErrors: {
-                firstName: '',
-                lastName: '',
-                dateOfBirth: '',
+                first_name: '',
+                last_name: '',
+                date_of_birth: '',
                 email: '',
                 password: '',
                 passwordConfirm: '',
@@ -75,13 +77,21 @@ class EditProfile extends Component {
                 zip: ''
             }
         });
+        let valid = true
 
-        if(this.state.profile.firstName === '') {
-            this.setState({formErrors: {firstName: 'First name is blank'}});
+        if(this.state.first_name === '') {
+            this.setState({formErrors: {first_name: 'First name is blank'}});
+            valid = false
         }
 
-        if(this.state.profile.lastName === '') {
-            this.setState({formErrors: {lastName: 'Last name is blank'}});
+        if(this.state.last_name === '') {
+            this.setState({formErrors: {last_name: 'Last name is blank'}});
+            valid = false
+        }
+
+        if(this.state.date_of_birth === '') {
+            this.setState({formErrors: {date_of_birth: 'Date of birth is invalid'}});
+            valid = false
         }
 
         // if(!this.state.email.includes('@')) {
@@ -96,23 +106,27 @@ class EditProfile extends Component {
             this.setState({formErrors: {passwordConfirm: 'Passwords do not match'}});
         }
 
-        if(this.state.profile.address === '') {
+        if(this.state.address === '') {
             this.setState({formErrors: {address: 'Address is blank'}});
+            valid = false
         }
 
-        if(this.state.profile.city === '') {
+        if(this.state.city === '') {
             this.setState({formErrors: {city: 'City is blank'}});
+            valid = false
         }
 
-        if(this.state.profile.state === '') {
+        if(this.state.state === '') {
             this.setState({formErrors: {state: 'State is blank'}});
+            valid = false
         }
 
-        if(this.state.profile.zip === '') {
+        if(this.state.zip === '') {
             this.setState({formErrors: {zip: 'Zip is blank'}});
+            valid = false
         }
 
-        if(this.state.formErrors) {
+        if(!valid) {
             return false;
         }
 
@@ -120,9 +134,13 @@ class EditProfile extends Component {
     }
 
     render() {
-        if(!this.props.auth.uid) {
+        if (!this.props.auth.uid) {
             return( <Redirect to='/login' /> );
-        }   
+        }
+
+        if (this.state.profileUpdated) {
+            this.props.history.goBack()
+        }
 
         return (
             <div className="container">
@@ -132,16 +150,16 @@ class EditProfile extends Component {
                     <p id="editProfleImageText">Edit Photo</p>
                     <form onSubmit={this.handleSubmit} id="editProfileForm">
                         <div className="editProfileInputSection">
-                            <input name="firstName" className="editProfileInputField" type="text" onChange={this.handleChange} value={this.state.profile.firstName} placeholder="First Name" />
-                            {this.state.formErrors.firstName ? <div className="invalidFormInputEditProfile">{this.state.formErrors.firstName}</div> : ''}
-                            <input name="lastName" className="editProfileInputField" type="text" onChange={this.handleChange} value={this.state.profile.lastName} placeholder="Last Name" />
-                            {this.state.formErrors.lastName ? <div className="invalidFormInputEditProfile">{this.state.formErrors.lastName}</div> : ''}
+                            <input name="first_name" className="editProfileInputField" type="text" onChange={this.handleChange} value={this.state.first_name} placeholder="First Name" />
+                            {this.state.formErrors.first_name ? <div className="invalidFormInputEditProfile">{this.state.formErrors.first_name}</div> : ''}
+                            <input name="last_name" className="editProfileInputField" type="text" onChange={this.handleChange} value={this.state.last_name} placeholder="Last Name" />
+                            {this.state.formErrors.last_name ? <div className="invalidFormInputEditProfile">{this.state.formErrors.last_name}</div> : ''}
                             <MaskedInput
-                            name="dob" className="editProfileInputField" type="text" onChange={this.handleChange} value={this.state.profile.date_of_birth} placeholder="Date of Birth"
+                            name="date_of_birth" className="editProfileInputField" type="text" onChange={this.handleChange} value={this.state.date_of_birth} placeholder="Date of Birth"
                             mask={[/[0-1]/, /[0-9]/, '/', /[0-3]/, /[0-9]/, '/', /[1-2]/, /[0-9]/, /[0-9]/, /[0-9]/]}
                             />
                             {/* <input name="dob" className="editProfileInputField" type="text" onChange={this.handleChange} value={this.state.profile.date_of_birth} placeholder="Date of Birth" /> */}
-                            {this.state.formErrors.dateOfBirth ? <div className="invalidFormInpuEditProfile">{this.state.formErrors.dateOfBirth}</div> : ''}
+                            {this.state.formErrors.dateOfBirth ? <div className="invalidFormInpuEditProfile">{this.state.formErrors.date_of_birth}</div> : ''}
                             {/* <input name="email" className="editProfileInputField" type="email" onChange={this.handleChange} value={this.state.email} placeholder="Email" /> */}
                         </div>
                         <div className="editProfileInputSection">
@@ -152,11 +170,11 @@ class EditProfile extends Component {
                             {this.state.formErrors.passwordConfirm ? <div className="invalidFormInputEditProfile">{this.state.formErrors.passwordConfirm}</div> : ''}
                         </div>
                         <div className="editProfileInputSection">
-                         <input name="address" className="editProfileInputField" type="text" onChange={this.handleChange} value={this.state.profile.address} placeholder="Address" />
+                         <input name="address" className="editProfileInputField" type="text" onChange={this.handleChange} value={this.state.address} placeholder="Address" />
                             {this.state.formErrors.address ? <div className="invalidFormInputEditProfile">{this.state.formErrors.address}</div> : ''}
-                            <input name="city" className="editProfileInputField editProfileInputLeft" type="text" onChange={this.handleChange} value={this.state.profile.city} placeholder="City" />
-                            <input name="state" className="editProfileInputField editProfileInputCenter" type="text" onChange={this.handleChange} value={this.state.profile.state} placeholder="State" />
-                            <input name="zip" className="editProfileInputField editProfileInputRight" type="text" onChange={this.handleChange} value={this.state.profile.zip} placeholder="ZIP" />
+                            <input name="city" className="editProfileInputField editProfileInputLeft" type="text" onChange={this.handleChange} value={this.state.city} placeholder="City" />
+                            <input name="state" className="editProfileInputField editProfileInputCenter" type="text" onChange={this.handleChange} value={this.state.state} placeholder="State" />
+                            <input name="zip" className="editProfileInputField editProfileInputRight" type="text" onChange={this.handleChange} value={this.state.zip} placeholder="ZIP" />
                             {this.state.formErrors.city ? <div className="invalidFormInputEditProfile">{this.state.formErrors.city}</div> : ''}
                             {this.state.formErrors.state ? <div className="invalidFormInputEditProfile">{this.state.formErrors.state}</div> : ''}
                             {this.state.formErrors.zip ? <div className="invalidFormInputEditProfile">{this.state.formErrors.zip}</div> : ''}
@@ -171,7 +189,6 @@ class EditProfile extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state);
     return {
         auth: state.firebase.auth,
         profile: state.firebase.profile
@@ -180,7 +197,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchProps = (dispatch) => {
     return {
-        // userSignUpDefault: (newUser) => dispatch(userSignUpDefault(newUser)) // Username and password are passed from this.state
+        userUpdate: (profile) => dispatch(userUpdate(profile))
     }
 }
 
