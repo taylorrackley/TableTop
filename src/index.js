@@ -10,6 +10,8 @@ import ViewTab from './components/viewTab/viewTab';
 import TabSurvey from './components/survey/tabSurvey';
 import PayTab from './components/payTab/payTab';
 import EditProfile from './components/profile/editProfile/editProfile';
+import RecentMeals from './components/recentMeals/recentMeals';
+import PaymentDetails from './components/paymentDetails/paymentDetails';
 
 // Import React Router
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
@@ -45,6 +47,8 @@ const routing = (
                 <Route path='/tab/survey' exact component={TabSurvey} />
                 <Route path='/profile/edit' exact component={EditProfile} />
                 <Route path='/profile/create' exact component={CreateProfile} />
+                <Route path='/meals' exact component={RecentMeals} />
+                <Route path='/payment' exact component={PaymentDetails} />
             </Switch>
         </Router>
     </Provider>

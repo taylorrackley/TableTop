@@ -15,14 +15,15 @@ class UserSignedInProfileLinks extends Component {
         return (
             <div id="profileLinksContainer">
                 <Link to='/'><button className="profileLinksContainerBtn">Open Tab</button></Link>
+                {/* <hr/>
+                <Link to="/meals"><button className="profileLinksContainerBtn">Recent Meals</button></Link> */}
                 <hr/>
-                <button className="profileLinksContainerBtn">Recent Meals</button>
-                <hr/>
-                <button className="profileLinksContainerBtn">Payment Details</button>
-                <hr/>
+                <Link to="/payment"><button className="profileLinksContainerBtn">Payment Method</button></Link>
+                
+                {/* <hr/>
                 <button className="profileLinksContainerBtn">Notifications</button>
                 <hr/>
-                <button className="profileLinksContainerBtn">Preferences</button>
+                <button className="profileLinksContainerBtn">Preferences</button> */}
                 <hr/>
                 <button id="profileLinksLogoutBtn" className="profileLinksContainerBtn" onClick={this.props.userLogout}>Logout</button>
             </div>

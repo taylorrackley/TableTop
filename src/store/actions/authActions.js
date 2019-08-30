@@ -55,7 +55,7 @@ export const userSignUpDefault = (newUser) => {
             newUser.email,
             newUser.password
         ).then((response) => {
-            return firestore.collection('users').doc(response.user.uid).set({
+            return firestore.collection('users').doc(response.user.uid).update({
                 firstName: newUser.firstName,
                 lastName: newUser.lastName,
                 date_of_birth: newUser.dob,
@@ -80,7 +80,7 @@ export const userUpdate = (profile) => {
 
         // profile = JSON.parse( JSON.stringify(profile) ) remove null values
 
-        firestore.collection('users').doc(firebase.auth().currentUser.uid).set({
+        firestore.collection('users').doc(firebase.auth().currentUser.uid).update({
             first_name: profile.first_name,
             last_name: profile.last_name,
             date_of_birth: profile.date_of_birth,

@@ -14,9 +14,11 @@
 
 #profileLinksContainer hr {
     width: 25%;
+    height: 0px;
+    border: 0;
     border-top: 1px solid #FFF;
 }
 
 #profileLinksLogoutBtn {
-    color: #000;
+    /* color: #000; */
 }

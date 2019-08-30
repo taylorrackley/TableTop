@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './payTab.css';
 import Alert from '../alert/alert';
-
-import { Link, Redirect } from 'react-router-dom';
+import loadingIcon from '../../img/loadingIcon.gif';
+import { Redirect } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 
@@ -12,7 +12,8 @@ class PayTab extends Component {
         super(props);
         this.state = {
             redirectToLogin: false,
-            redirectToSurvey: false
+            redirectToSurvey: false,
+            displayLoad: true
         };
     }
 
@@ -24,12 +25,27 @@ class PayTab extends Component {
         this.setState({redirectToSurvey: true});
     }
 
+    componentDidMount() {
+        setTimeout(() => {
+            this.setState({displayLoad: false});
+        }, 2500);
+    }
+
     render() {
-        if(this.state.redirectToSurvey) {
+
+        if (this.state.displayLoad) {
+            return (
+                <div className="container">
+                    <img id="loadIcon" src={loadingIcon} alt="Loading Icon" />
+                </div>
+            );
+        }
+
+        if (this.state.redirectToSurvey) {
             return <Redirect to="/tab/survey" />
         }
 
-        if(this.state.redirectToLogin) {
+        if (this.state.redirectToLogin) {
             return <Redirect to="/login" />
         }
 
@@ -38,14 +54,6 @@ class PayTab extends Component {
         }
 
         return <Alert alertText="Payment Successful!" nextViewBtnFunc={this.alertGoToSurvey} nextViewBtnText="Take Survey" />;
-
-        // return (
-        //     <div className="container gradient">
-        //         <div id="payTab">
-        //             <Link to='/tab/survey'><button>Pay tab</button></Link>
-        //         </div>
-        //     </div>
-        // );
     }
 }
 

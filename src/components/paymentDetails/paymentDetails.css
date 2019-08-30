@@ -1,0 +1,81 @@
+#editProfileWrapper {
+    width: 75%;
+    margin: 0 auto;
+    margin-top: 100px;
+    text-align: center;
+}
+
+#editProfileImage {
+    display: block;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+}
+
+#editProfleImageText {
+    margin-top: 20px;
+    text-transform: uppercase;
+    text-decoration: underline;
+    color: #B20404;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+#editProfileForm {
+    margin-top: 50px;
+    color: #000;
+}
+
+.editProfileInputSection {
+    margin-bottom: 30px;
+}
+
+.editProfileInputField {
+    width: 100%;
+    height: 40px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    background-color: #FFF;
+    border: 2px solid #B20404;
+    border-radius: 20px;
+    padding: 5px;
+    padding-left: 20px;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 100;
+}
+
+.editProfileInputLeft {
+    float: left;
+    width: 47%;
+    padding: 0px;
+    text-align: center;
+}
+
+.editProfileInputRight {
+    float: right;
+    width: 47%;
+    padding: 0px;
+    text-align: center;
+}
+
+.editProfileSubmit {
+    background-color: #B20404;
+    color: #FFF;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 75px;
+}
+
+.invalidFormInputEditProfile {
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: -10px;
+    margin-bottom: 15px;
+    background-color: #B20404;
+    border: 2px solid #B20404;
+    border-radius: 20px;
+    padding: 4px;
+    font-size: 12px;
+    font-weight: 600;
+}

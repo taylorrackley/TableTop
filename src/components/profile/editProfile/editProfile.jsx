@@ -58,7 +58,7 @@ class EditProfile extends Component {
                 zip: this.state.zip
             }
             this.props.userUpdate(profile);
-            this.state.profileUpdated = true
+            this.setState({profileUpdated: true});
         }
     }
 
@@ -147,7 +147,7 @@ class EditProfile extends Component {
                 {/* <Navbar insertedText="" /> */}
                 <div id="editProfileWrapper">
                     <img id="editProfileImage" src={profileImage} alt="Profile" />
-                    <p id="editProfleImageText">Edit Photo</p>
+                    <p id="editProfleImageText">Edit Profile</p>
                     <form onSubmit={this.handleSubmit} id="editProfileForm">
                         <div className="editProfileInputSection">
                             <input name="first_name" className="editProfileInputField" type="text" onChange={this.handleChange} value={this.state.first_name} placeholder="First Name" />
@@ -189,6 +189,7 @@ class EditProfile extends Component {
 }
 
 const mapStateToProps = (state) => {
+    console.log(state);
     return {
         auth: state.firebase.auth,
         profile: state.firebase.profile

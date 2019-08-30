@@ -6,8 +6,6 @@ import ViewTabDetails from './viewTabDetails/viewTabDetails';
 import PayTabBtn from './payTabBtn/payTabBtn';
 import ViewTabOverview from './viewTabOverview/viewTabOverview';
 
-import { Redirect } from 'react-router-dom';
-
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
@@ -29,9 +27,6 @@ class ViewTab extends Component {
         setTimeout(() => {
             this.setState({animatePayTabContainer: 'view-visible'});
         }, 0);
-    }
-    
-    componentDidUpdate() {
     }
 
     render() {

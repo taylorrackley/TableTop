@@ -29,13 +29,14 @@ class Profile extends Component {
         const links = this.props.auth.uid ? <UserSignedInProfileLinks /> : <UserSignedOutLinks />;
         const firstName = this.props.profile.first_name ? this.props.profile.first_name : ''
         const lastName = this.props.profile.last_name ? this.props.profile.last_name : ''
+        const profile = this.props.auth.uid ? <Link to="/profile/edit"><p id="profileViewEditUserBtn" className="profileTopText">Edit Profile</p></Link> : <Link to="/profile/create"><p id="profileViewEditUserBtn" className="profileTopText">Create Profile</p></Link>;
 
         return (
             <div id="profileContainer" className={this.state.animateProfileView}>
                 <img id="closeProfileView" src={closeIcon} onClick={this.closeProfileView} alt="Close Profile View" />
                 <img id="profileImage" src={profileImage} alt="Profile" />
                 <p id="profileViewUsername" className="profileTopText" >{firstName+' '+lastName}</p>
-                <Link to="/profile/edit"><p id="profileViewEditUserBtn" className="profileTopText">Edit Profile</p></Link>
+                { profile }
                 { links }
             </div>
         );

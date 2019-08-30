@@ -114,7 +114,7 @@ class CreateProfile extends Component {
             <div className="container">
                 <div id="createProfileWrapper">
                     <img id="createProfileImage" src={profileImage} alt="Profile" />
-                    <p id="createProfleImageText">Add Photo</p>
+                    <p id="createProfleImageText">Create Profile</p>
                     <form onSubmit={this.handleSubmit} id="createProfileForm">
                         <div className="createProfileInputSection">
                             <input name="firstName" className="createProfileInputField" type="text" onChange={this.handleChange} placeholder="First Name" />
