@@ -61,7 +61,7 @@ class TabSurvey extends Component {
         return (
             <div id="tabSurveyContainer" className="container gradient">
                 <Navbar />
-                <p id="tabSurveyRestaurantTitle">McDick</p>
+                <p id="tabSurveyRestaurantTitle"></p>
                 <img id="tabSurveyBackgroundLogo" src={logo} alt="Logo" />
                 <TransitionGroup>
                     <CSSTransition
