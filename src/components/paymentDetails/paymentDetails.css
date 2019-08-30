@@ -1,11 +1,11 @@
-#editProfileWrapper {
+#paymentDetailsWrapper {
     width: 75%;
     margin: 0 auto;
     margin-top: 100px;
     text-align: center;
 }
 
-#editProfileImage {
+#paymentDetailsImage {
     display: block;
     width: 100px;
     height: 100px;
@@ -21,16 +21,16 @@
     font-weight: 600;
 }
 
-#editProfileForm {
+#paymentDetailsForm {
     margin-top: 50px;
     color: #000;
 }
 
-.editProfileInputSection {
+.paymentDetailsInputSection {
     margin-bottom: 30px;
 }
 
-.editProfileInputField {
+.paymentDetailsInputField {
     width: 100%;
     height: 40px;
     box-sizing: border-box;
@@ -45,21 +45,21 @@
     font-weight: 100;
 }
 
-.editProfileInputLeft {
+.paymentDetailsInputLeft {
     float: left;
     width: 47%;
     padding: 0px;
     text-align: center;
 }
 
-.editProfileInputRight {
+.paymentDetailsInputRight {
     float: right;
     width: 47%;
     padding: 0px;
     text-align: center;
 }
 
-.editProfileSubmit {
+.paymentDetailsSubmit {
     background-color: #B20404;
     color: #FFF;
     text-align: center;
@@ -67,7 +67,7 @@
     margin-bottom: 75px;
 }
 
-.invalidFormInputEditProfile {
+.invalidFormInputpaymentDetails {
     width: 100%;
     box-sizing: border-box;
     margin-top: -10px;

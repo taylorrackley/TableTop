@@ -56,22 +56,22 @@ class PaymentDetails extends Component {
 
         return (
             <div className="container">
-                <div id="editProfileWrapper">
+                <div id="paymentDetailsWrapper">
                     <p id="editProfleImageText">Payment Method</p>
-                    <form onSubmit={this.handleSubmit} id="editProfileForm">
-                        <div className="editProfileInputSection">
-                        <input name="cc_name" className="editProfileInputField" type="text" onChange={this.handleChange} value={this.state.cc_name} placeholder="Name on Card" />
-                            <input name="cc_number" className="editProfileInputField" type="text" onChange={this.handleChange} value={this.state.cc_number} placeholder="Card Number" />
+                    <form onSubmit={this.handleSubmit} id="paymentDetailsForm">
+                        <div className="paymentDetailsInputSection">
+                        <input name="cc_name" className="paymentDetailsInputField" type="text" onChange={this.handleChange} value={this.state.cc_name} placeholder="Name on Card" />
+                            <input name="cc_number" className="paymentDetailsInputField" type="text" onChange={this.handleChange} value={this.state.cc_number} placeholder="Card Number" />
                             <MaskedInput
-                                name="cc_pin" className="editProfileInputField editProfileInputLeft" type="text" onChange={this.handleChange} value={this.state.cc_pin} placeholder="CVV"
+                                name="cc_pin" className="paymentDetailsInputField paymentDetailsInputLeft" type="text" onChange={this.handleChange} value={this.state.cc_pin} placeholder="CVV"
                                 mask={[/[0-9]/, /[0-9]/, /[0-9]/]}
                             />
                             <MaskedInput
-                                name="cc_expire" className="editProfileInputField editProfileInputRight" type="text" onChange={this.handleChange} value={this.state.cc_expire} placeholder="Date"
+                                name="cc_expire" className="paymentDetailsInputField paymentDetailsInputRight" type="text" onChange={this.handleChange} value={this.state.cc_expire} placeholder="Date"
                                 mask={[/[0-1]/, /[0-9]/, '/', /[0-9]/, /[0-9]/]}
                             />
                         </div>
-                        <button className="editProfileInputField editProfileSubmit">Update Card</button>
+                        <button className="paymentDetailsInputField paymentDetailsSubmit">Update Card</button>
                     </form>
                 </div>
             </div>

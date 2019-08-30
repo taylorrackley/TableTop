@@ -28,7 +28,7 @@ class PayTab extends Component {
     componentDidMount() {
         setTimeout(() => {
             this.setState({displayLoad: false});
-        }, 2500);
+        }, 2000);
     }
 
     render() {

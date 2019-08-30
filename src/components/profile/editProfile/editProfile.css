@@ -47,21 +47,21 @@
 
 .editProfileInputLeft {
     float: left;
-    width: 45%;
+    max-width: 40%;
     padding: 0px;
     text-align: center;
 }
 
 .editProfileInputCenter {
     display: inline-block;
-    width: 20%;
+    max-width: 23%;
     padding: 0px;
     text-align: center;
 }
 
 .editProfileInputRight {
     float: right;
-    width: 26%;
+    max-width: 25%;
     padding: 0px;
     text-align: center;
 }
